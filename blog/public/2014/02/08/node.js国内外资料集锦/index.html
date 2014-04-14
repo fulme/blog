@@ -1,0 +1,516 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>node.js国内外资料集锦 | Fulme&#39;s blog</title>
+  <meta name="author" content="Fulme">
+  
+  <meta name="description" content="Thinking makes you stronger, ideal makes you invincible.">
+  
+  <meta name="author" content="Fulme">
+
+  
+  
+  <meta name="keywords" content="NodeJS">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="node.js国内外资料集锦"/>
+  <meta property="og:site_name" content="Fulme&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Fulme&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33912996-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Fulme&#39;s blog</a></h1>
+  <h2><a href="/">Thinking makes you stronger, ideal makes you invincible.</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+      <li><a href="/todo">Todo</a></li>
+    
+    
+    <li> <a title="harlem shake" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-02-08T07:31:50.000Z"><a href="/2014/02/08/node.js国内外资料集锦/">2014-02-08</a></time>
+      
+      
+  
+    <h1 class="title">node.js国内外资料集锦</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <hr>
+<h3 id="-">国内</h3>
+<ul>
+<li>NodeJS专业中文社区:  <a href="http://cnodejs.org" target="_blank"><a href="http://cnodejs.org">http://cnodejs.org</a></a></li>
+<li>官方API文档：<a href="http://cnodejs.org/api/" target="_blank"><a href="http://cnodejs.org/api/">http://cnodejs.org/api/</a></a></li>
+<li>最全中文入门：<a href="http://cnodejs.org/blog/?p=32" target="_blank"><a href="http://cnodejs.org/blog/?p=32">http://cnodejs.org/blog/?p=32</a></a></li>
+<li>NodeJS中文翻译：<a href="http://wiki.grati.org/index.php?title=NodeJS%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3" target="_blank"><a href="http://wiki.grati.org/index.php?title=NodeJS%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3">http://wiki.grati.org/index.php?title=NodeJS%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3</a></a></li>
+<li>又一篇中文入门：<a href="http://news.csdn.net/a/20100312/217428.html" target="_blank"><a href="http://news.csdn.net/a/20100312/217428.html">http://news.csdn.net/a/20100312/217428.html</a></a></li>
+<li>一个靠谱的nodejs学习笔记：<a href="http://blog.csdn.net/zhangxin09/category/726487.aspx?PageNumber=2" target="_blank"><a href="http://blog.csdn.net/zhangxin09/category/726487.aspx?PageNumber=2">http://blog.csdn.net/zhangxin09/category/726487.aspx?PageNumber=2</a></a></li>
+<li>用node写MVC框架：<a href="http://www.cnblogs.com/QLeelulu/archive/2011/01/28/nodejs_into_and_n2mvc.html" target="_blank"><a href="http://www.cnblogs.com/QLeelulu/archive/2011/01/28/nodejs_into_and_n2mvc.html">http://www.cnblogs.com/QLeelulu/archive/2011/01/28/nodejs_into_and_n2mvc.html</a></a><a id="more"></a>
+
+</li>
+</ul>
+<h3 id="-">国外</h3>
+<ul>
+<li>官方网站:  <a href="http://nodejs.org/" target="_blank"><a href="http://nodejs.org/">http://nodejs.org/</a></a></li>
+<li>英文文档：<a href="http://nodejs.org/docs/v0.3.5/api/all.html" target="_blank"><a href="http://nodejs.org/docs/v0.3.5/api/all.html">http://nodejs.org/docs/v0.3.5/api/all.html</a></a></li>
+<li>node包管理器：<a href="http://npmjs.org/" target="_blank"><a href="http://npmjs.org/">http://npmjs.org/</a></a></li>
+<li>官方介绍：<a href="http://nodejs.org/jsconf2010.pdf" target="_blank"><a href="http://nodejs.org/jsconf2010.pdf">http://nodejs.org/jsconf2010.pdf</a></a></li>
+<li>Node的模块大全，必阅读：<a href="https://github.com/ry/node/wiki/modules" target="_blank"><a href="https://github.com/ry/node/wiki/modules">https://github.com/ry/node/wiki/modules</a></a></li>
+<li>一个Node入门网站：<a href="http://howtonode.org" target="_blank"><a href="http://howtonode.org">http://howtonode.org</a></a></li>
+<li>一个不错的Node博客：<a href="http://blog.nodejitsu.com/" target="_blank"><a href="http://blog.nodejitsu.com/">http://blog.nodejitsu.com/</a></a></li>
+<li>包含了不少node信息的前端blog：<a href="http://dailyjs.com/" target="_blank"><a href="http://dailyjs.com/">http://dailyjs.com/</a></a></li>
+<li>一个48小时NodeJS的竞赛网站：<a href="http://nodeknockout.com/" target="_blank"><a href="http://nodeknockout.com/">http://nodeknockout.com/</a></a></li>
+<li>号称世界上第一个用node搭建的SaaS应用：<a href="http://transloadit.com/" target="_blank"><a href="http://transloadit.com/">http://transloadit.com/</a></a></li>
+<li>如何写Node.JS的插件：<a href="https://www.cloudkick.com/blog/2010/aug/23/writing-nodejs-native-extensions/" target="_blank"><a href="https://www.cloudkick.com/blog/2010/aug/23/writing-nodejs-native-extensions/">https://www.cloudkick.com/blog/2010/aug/23/writing-nodejs-native-extensions/</a></a></li>
+<li>打造在线监控系统：<a href="http://blog.new-bamboo.co.uk/2009/12/7/real-time-online-activity-monitor-example-with-node-js-and-websocket" target="_blank"><a href="http://blog.new-bamboo.co.uk/2009/12/7/real-time-online-activity-monitor-example-with-node-js-and-websocket">http://blog.new-bamboo.co.uk/2009/12/7/real-time-online-activity-monitor-example-with-node-js-and-websocket</a></a></li>
+<li>搭建一个webservice：<a href="http://blog.nodejitsu.com/a-simple-webservice-in-nodejs" target="_blank"><a href="http://blog.nodejitsu.com/a-simple-webservice-in-nodejs">http://blog.nodejitsu.com/a-simple-webservice-in-nodejs</a></a></li>
+</ul>
+<h3 id="-node-">基于node的项目和应用程序</h3>
+<ul>
+<li><a href="http://github.com/ry/node_chat" target="_blank">node_chat</a> by ry</li>
+<li><a href="http://github.com/wsdookadr/Q-Chess/tree/rewrite" target="_blank">q-chess</a> by wsdookadr — chess game multiplayer server using <a href="http://github.com/jcoglan/faye" target="_blank">faye</a> + client written using <a href="http://qooxdoo.org/" target="_blank">Qooxdoo</a></li>
+<li><a href="http://github.com/ncb000gt/node3p" target="_blank">node3p</a> by ncb000gt — AmazonMP3 downloader</li>
+<li><a href="http://github.com/ncb000gt/node3p-web" target="_blank">node3p-web</a> by ncb000gt — Web interface for node3p</li>
+<li><a href="http://github.com/tav/nodelint" target="_blank">nodelint</a> by tav — run jslint from the command line</li>
+<li><a href="https://github.com/tsmith/minlint" target="_blank">minlint</a> – minimalist version of jslint from command line</li>
+<li><a href="http://github.com/benschmaus/nodeload" target="_blank">nodeload</a> by benschmaus and jonjlee — utility for benchmarking HTTP APIs</li>
+<li><a href="http://github.com/gjritter/nodewiki" target="_blank">nodewiki</a> — a simple wiki based on node and redis</li>
+<li><a href="http://github.com/furtivefelon/blog.js" target="_blank">blog.js</a> — Simple blogging engine based on node.js</li>
+<li><a href="http://github.com/kurokikaze/cassiterite" target="_blank">cassiterite</a> — Another blogging engine based on node.js + Tokyo Tyrant + nginx</li>
+<li><a href="http://github.com/creationix/sousaball" target="_blank">Sousaball</a> by creationix(<a href="http://sousaball.creationix.com/" target="_blank">sousaball.creationix.com</a>)</li>
+<li><a href="http://github.com/creationix/node-topcloud-chat" target="_blank">DinMaker</a> by creationix([ive demo at <a href="http://chat.creationix.com/" target="_blank">chat.creationix.com</a>)</li>
+<li><a href="http://github.com/ncr/flickr_spy" target="_blank">Flickr Spy</a> — Discover where your Flickr contacts are commenting</li>
+<li><a href="http://github.com/orlandov/azathoth" target="_blank">azathoth</a> — simple HTTP traffic/load generator and benchmark proof of concept</li>
+<li><a href="http://github.com/mhansen/antinode" target="_blank">antinode</a> — Simple static file HTTP Server with logging</li>
+<li><a href="http://github.com/tautologistics/nodemachine" target="_blank">NodeMachine</a> — Port of WebMachine for Node.js</li>
+<li><a href="http://github.com/weilawei/LifeInText" target="_blank">LifeInText</a> — LiT is a mashup platform for personal projects and snippets.</li>
+<li><a href="http://github.com/endtwist/AjaxIM" target="_blank">Ajax IM</a> — Ajax IM is an instant messaging server and framework for the browser.</li>
+<li><a href="http://www.7minuteschrono.com/" target="_blank">7 Minutes Chrono</a> – A speed-dating chat application. Uses websockets and node.js</li>
+<li><a href="http://www.persvr.org/" target="_blank">Persevere</a> – REST/HTTP + JSON-based web data project that includes Pintura, Perstore, CommonJS-Utils</li>
+<li><a href="http://github.com/mcarter/js.io" target="_blank">js.io</a> — Javascript Networking Library for building real-time web applications</li>
+<li><a href="http://www.busbound.com/" target="_blank">BusBound</a> – iPhone web application built with express framework</li>
+<li><a href="http://jsonpify.com/" target="_blank">JSONPify</a> – a JSONP proxy for client applications</li>
+<li><a href="http://github.com/simonw/djangode" target="_blank">Djangode</a> – Django’s regex-based URL handling, utility functions, and html templating for node</li>
+<li><a href="http://jfd.github.com/wpilot/" target="_blank">The WPilot Project</a> – A multiplayer, space shooter, action game in your browser. Server is built in node</li>
+<li><a href="http://github.com/LearnBoost/Socket.IO-node" target="_blank">Socket.IO</a> – An abstraction over all the realtime transports (WebSocket, long polling, XHR multipart, etc) for the Node HTTP server</li>
+<li><a href="http://github.com/marak/zztmmo" target="_blank">zztmmo</a> – a zzt based massive multiplayer online game built in node.js and jQuery (currently only single player)</li>
+<li><a href="http://www.diretto.org/" target="_blank">diretto</a> – Distributed Recon/Reporting Transceiver Toolkit – Uses Node.js for web-based media storage and for its RESTful webservice implementation</li>
+<li><a href="http://elusivehippo.com/" target="_blank">ElusiveHippo</a> – Push deployment for nodejs (non-functional / doesn’t work)</li>
+<li><a href="http://chessriot.com/" target="_blank">Chess Riot</a> – a live Lightning Chess app built in node.js, express, CoffeeScript and jQuery. By @weepy</li>
+<li><a href="http://www.web2media.net/laktek/2010/05/25/real-time-collaborative-editing-with-websockets-node-js-redis/" target="_blank">Realie</a> – Real-time Collaborative Editor using Web Sockets, Node.js &amp; Redis (non-functional / doesn’t work)</li>
+<li><a href="http://github.com/idris/growlhub" target="_blank">GrowlHub</a> – Growl Notifications for GitHub</li>
+<li><a href="http://github.com/gumho/simple-node.js-mud" target="_blank">Simple Node.js MUD</a> – Simple multi-user dungeon using Node.js</li>
+<li><a href="http://github.com/brianleroux/wtfjs" target="_blank">wtfjs</a> – what the fuck javascript!</li>
+<li><a href="http://github.com/stevedekorte/vertex.js" target="_blank">vertex.js</a> – A graph database inspired by filesystems built on node.js and tokyocabinet.</li>
+<li><a href="http://github.com/jashkenas/api-playground" target="_blank">The API Playground</a> – A website where journalists can play with API examples. (CoffeeScript/Express) <a href="http://apiplayground.org/" target="_blank">apiplayground.org</a></li>
+<li><a href="https://szpil.com/" target="_blank">Szpil</a> – CRM using Node and TokyoCabinet. Shared client/server database and model code, user interface decoupled from the network, APIretrieval and authorization performed at the meta-data layer using set union and intersection on indexes to avoid JSONdeserialization/serialization overhead.</li>
+<li><a href="http://vowsjs.org/" target="_blank">vows.js</a> – “Asynchronous behaviour driven development for Node.”</li>
+<li><a href="http://github.com/colingourlay/jimi" target="_blank">jimi</a> — A framework for writing modular web applications in node.js (tutorial)</li>
+<li><a href="http://github.com/pkrumins/stackvm" target="_blank">stackvm</a> — Virtual machines on the web!</li>
+<li><a href="http://github.com/StanAngeloff/node-paperserve" target="_blank">paperserve</a> — Quick and dirty web server from your working directory</li>
+<li><a href="http://github.com/fczuardi/ttc" target="_blank">Trending Topics Client</a> — Command line tool to get trending topics from Twitter</li>
+<li><a href="http://github.com/bancek/node-interactive-shell" target="_blank">nTunes by TooTallNate</a> — A REST (HTTP) API for interacting with iTunes written in NodeJS.</li>
+<li><a href="http://github.com/bancek/node-interactive-shell" target="_blank">nTunesAnywhere by TooTallNate</a> — A mobile WebApp to access your iTunes library from anywhere (using nTunes and jQTouch)!</li>
+<li><a href="http://github.com/bancek/node-interactive-shell" target="_blank">Node.js Interactive Shell</a> — Interactive shell for Node.js</li>
+<li><a href="http://github.com/mrohad/Alligator" target="_blank">Alligator</a> — Application Server on top of NodeJS (JSSP and SSJS support)</li>
+<li><a href="http://github.com/linkitprojects/node-build" target="_blank">node-build</a> — ant like build tool for nodejs without the xml hassle</li>
+<li><a href="http://github.com/haxd/scriptable-node-irc-bot" target="_blank">scriptable-node-irc-bot</a> — Scriptable Node IRC Bot</li>
+<li><a href="http://www.toptwittertrends.com/" target="_blank">Top Twitter Trends</a> — Real time trending tweets by node.js, nginx and mongodb</li>
+<li><a href="http://www.cloud9ide.com/" target="_blank">Cloud9</a> — Cloud9 IDE is aiming to be the IDE for Javascript developers, built with NodeJS and lots of other Node modules</li>
+<li><a href="http://github.com/dylang/opowerjobs" target="_blank">OPOWER Jobs</a> — Open source example of a full live site using Express, Connect, EJS, AssetManager, Logging, and other Node modules.</li>
+<li><a href="http://github.com/remy/nodemon" target="_blank">nodemon</a> — Development tool for automatically restarting Node server when changes are made to any app files</li>
+<li><a href="http://github.com/azer/jsbuild" target="_blank">jsbuild</a> — A command-line utility that provides building CommonJS modules and packages for web</li>
+<li><a href="http://github.com/BonsaiDen/NodeGame-Shooter" target="_blank">NodeGame Shooter</a> – Multiplayer asteroids with powerups etc. Using a fat Node.js server with thin clients</li>
+<li><a href="http://github.com/SchizoDuckie/Node-CLI" target="_blank">NodeCli</a> – A super-simple class for Node.js to spice up your Node.js console output. Position cursor, clear screen, change colors</li>
+<li><a href="http://github.com/pleax/node-tracker" target="_blank">noatta.ch</a> — Instant Personal File Sharing</li>
+<li><a href="">node-tracker</a> — BitTorrent tracker implemented with Node.js</li>
+<li><a href="http://scrabb.ly/" target="_blank">Scrabbly</a> – A Massively Multiplayer word game written on node.js. A Node Knockout winner.</li>
+<li><a href="http://github.com/robrighter/node-boilerplate" target="_blank">node-boilerplate</a> — Everything you need to get started on a Node.js website with express and socket.IO</li>
+<li><a href="http://stephank.github.com/orona/" target="_blank">Orona</a> — A multiplayer game of tank warfare. (Remake of the classic Mac game Bolo.)</li>
+<li><a href="http://hummingbirdstats.com/" target="_blank">Hummingbird</a> — A realtime web analytics app using socket.io</li>
+<li><a href="http://node.io/" target="_blank">Node.io</a> — A distributed data scraping and processing framework</li>
+<li><a href="https://github.com/mgutz/backbone-knockout-examples" target="_blank">Backbone Examples Ported From Knockout</a> — by Mario Gutierrez</li>
+<li><a href="https://github.com/ry/node/wiki/http" target="_blank">TxtAtlas: Put your texts on the map</a> ://txtatlas.com — A demo Twilio/Node.js/Redis application by Stephen J. Walters</li>
+<li><a href="https://github.com/michael/substance" target="_blank">Substance</a> — A data-driven and cloud-aware realtime document authoring engine</li>
+<li><a href="http://yay3d.com/graffiti" target="_blank">Graffiti β</a> — Interactive multi-user shared canvas whiteboard</li>
+<li><a href="http://birdch.at/" target="_blank">BirdChat</a> — Chat with your friends from Twitter</li>
+<li><a href="http://bookfriend.me/" target="_blank">bookfriend.me</a> — Community site for Barnes and Noble Nook owners who want to borrow/lend books</li>
+<li><a href="http://fishl.com/" target="_blank">Fishl.com</a> — Mark and save quotes you like all over the Web</li>
+<li><a href="http://cleverchris.com/slyncr/" target="_blank">slyncr</a> — bookmarklet to control web slideshows via a remote site</li>
+<li><a href="http://www.applifier.com/" target="_blank">Applifier</a> – Largest social game cross promo network) (reference <a href="http://twitter.com/jussil/status/12048190433918976" target="_blank"><a href="http://twitter.com/jussil/status/12048190433918976">http://twitter.com/jussil/status/12048190433918976</a></a>)</li>
+<li><a href="https://github.com/dalssoft/memcached.js" target="_blank">memcached.js</a> — Port of Memcached server for Node.js</li>
+<li><a href="http://loggly.com/" target="_blank">Loggly</a> — Webservice for receiving syslog and HTTP based logs.</li>
+<li><a href="http://spotted.at/" target="_blank">spotted@</a> — spotted @ provides local classifieds for jobs, housing, for sale, personals, services, local community, and events.</li>
+<li><a href="https://github.com/kazuyukitanimura/designo" target="_blank">designo</a> — Realtime Twitter client demo exploiting Node.js+Websockets+HTML5</li>
+<li><a href="https://github.com/anhel/node-bittorrent-tracker" target="_blank">Bittorrent Tracker</a> – High performance bittorrent tracker by anhel</li>
+<li><a href="https://github.com/mwaylabs/the-m-project" target="_blank">The-M-Project</a> – HTML5 JavaScript framework for mobile apps with nodeJS build tool</li>
+</ul>
+<p>  <strong>声明</strong>：<em>本文是在学习用MarkDown编写博客时抄写的，</em><a href="http://cnodejs.org/topic/4f16442ccae1f4aa27001149" target="_blank">【原文】</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/blog/">blog</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/NodeJS/">NodeJS</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+<!-- Duoshuo Comment BEGIN -->
+  <div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"suluf"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- Duoshuo Comment END -->
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:www.suluf.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/04/11/javascript-inherit/">Javascript继承</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/10/pro-javascript-design-patterns-decorator/">Javascript设计模式 - 装饰者模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/31/pro-javascript-design-patterns-adapter/">Javascript设计模式 - 适配器模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/31/pro-javascript-design-patterns-facade/">Javascript设计模式 - 门面模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/24/pro-javascript-design-patterns-composite/">Javascript设计模式 - 组合模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/blog/">blog</a><small>5</small></li>
+  
+    <li><a href="/categories/book/">book</a><small>7</small></li>
+  
+    <li><a href="/categories/code/">code</a><small>1</small></li>
+  
+    <li><a href="/categories/diary/">diary</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Javascript/">Javascript</a><small>8</small></li>
+  
+    <li><a href="/tags/NodeJS/">NodeJS</a><small>5</small></li>
+  
+    <li><a href="/tags/copssh/">copssh</a><small>1</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>1</small></li>
+  
+    <li><a href="/tags/hexo/">hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/samba/">samba</a><small>1</small></li>
+  
+    <li><a href="/tags/source/">source</a><small>1</small></li>
+  
+    <li><a href="/tags/utils/">utils</a><small>1</small></li>
+  
+    <li><a href="/tags/设计模式/">设计模式</a><small>7</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Javascript/" style="font-size: 20.00px;">Javascript</a><a href="/tags/NodeJS/" style="font-size: 15.00px;">NodeJS</a><a href="/tags/copssh/" style="font-size: 10.00px;">copssh</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/hexo/" style="font-size: 12.50px;">hexo</a><a href="/tags/samba/" style="font-size: 10.00px;">samba</a><a href="/tags/source/" style="font-size: 10.00px;">source</a><a href="/tags/utils/" style="font-size: 10.00px;">utils</a><a href="/tags/设计模式/" style="font-size: 17.50px;">设计模式</a>
+  </div>
+</div>
+
+
+  
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=1848812323&verifier=294c9662&dpc=1"></iframe>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://zipperary.com/" title="Zippera's Blog">Zippera</a></li>
+</ul>
+</div>
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Fulme
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

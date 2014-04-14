@@ -1,0 +1,489 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>samba学习笔记 | Fulme&#39;s blog</title>
+  <meta name="author" content="Fulme">
+  
+  <meta name="description" content="Thinking makes you stronger, ideal makes you invincible.">
+  
+  <meta name="author" content="Fulme">
+
+  
+  
+  <meta name="keywords" content="samba">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="samba学习笔记"/>
+  <meta property="og:site_name" content="Fulme&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Fulme&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33912996-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Fulme&#39;s blog</a></h1>
+  <h2><a href="/">Thinking makes you stronger, ideal makes you invincible.</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+      <li><a href="/todo">Todo</a></li>
+    
+    
+    <li> <a title="harlem shake" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-03-19T00:49:51.000Z"><a href="/2014/03/19/diary-samba/">2014-03-19</a></time>
+      
+      
+  
+    <h1 class="title">samba学习笔记</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="-samba">什么是samba</h2>
+<p><a href="http://baike.baidu.com/link?url=fpCneip0_fVu6C1m7k9XFTiFilCi88C4ggR0Eya-ZA5kFsOCeizBnVke-cMze54G" target="_blank">samba</a>是Unix和Linux上实现SMB协议的免费软件。
+<a href="http://baike.baidu.com/view/262410.htm" target="_blank">SMB</a>（Server Messages Blck, 信息服务块）是局域网上共享文件和打印机的通信协议，它为局域网内不同计算机提供文件及打印机等资源的共享服务。</p>
+<h2 id="-samba">为什么要samba</h2>
+<p>为了实现Windows主机与Linux主机之间的资源共享，Linux操作系统提供了samba服务，samba为两种操作系统架起了一座桥梁，使得Windows与Linux系统之间方便地实现共享。本人的用途：在开发网站的时候需要配合后端做一些模板替换及渲染工作，且代码需要部署到Linux主机上，但是本人已经习惯了Windows上的开发环境，于是samba派上了用场，通过安装和配置samba，然后在Windows上做一个文件映射就可以实现，在Windows上开发实时同步到Linux主机上了。具体的安装配置，接下来会讲。</p>
+<h2 id="-samba">安装samba</h2>
+<p>默认情况下，Linux系统已经安装samba了，通过如下的命令可以查看：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>rpm -qa | grep samp
+
+samba-<span class="number">3.0</span><span class="number">.33</span>-<span class="number">3.14</span><span class="preprocessor">.el</span>5
+samba-common-<span class="number">3.0</span><span class="number">.33</span>-<span class="number">3.14</span><span class="preprocessor">.el</span>5
+</pre></td></tr></table></figure>
+
+<p>如果没有安装，可以通过如下命令安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>rpm -ivh samba-<span class="number">3.0</span><span class="number">.33</span>-<span class="number">3.29</span><span class="preprocessor">.el</span>5_6<span class="number">.2</span><span class="preprocessor">.i</span>386<span class="preprocessor">.rpm</span> -f --nodeps
+rpm -ivh samba-client-<span class="number">3.0</span><span class="number">.33</span>-<span class="number">3.29</span><span class="preprocessor">.el</span>5_6<span class="number">.2</span><span class="preprocessor">.i</span>386<span class="preprocessor">.rpm</span>  -f --nodeps
+rpm -ivh samba-common-<span class="number">3.0</span><span class="number">.33</span>-<span class="number">3.29</span><span class="preprocessor">.el</span>5_6<span class="number">.2</span><span class="preprocessor">.i</span>386<span class="preprocessor">.rpm</span> -f --nodeps
+</pre></td></tr></table></figure>
+
+<p>安装完成后就可以通过上面的查询命令查看了。</p>
+<h2 id="-samba">配置samba</h2>
+<p>samba的配置信息一般都在<code>/etc/samba</code>目录下，主配置文件为<code>smb.conf</code>，文件中记录着大量规则和共享信息。在配置之前有必要先了解一下samba工作原理。<br><strong>原理</strong>：<em>客户端发起访问工项目的请求，samba服务接收到请求以后查看smb.conf文件，如果共享目录存在且访问者有权限则允许访问，最后将访问过程中系统的信息以及采集的用户访问行为信息存放到日志中。</em></p>
+<h3 id="-">修改配置文件</h3>
+<p>首先备份一下配置文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>cd /etc/sabma
+sudo mv smb<span class="preprocessor">.config</span> smb<span class="preprocessor">.config</span><span class="preprocessor">.bak</span>
+</pre></td></tr></table></figure>
+
+<p>新建一个配置文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>touch smb<span class="preprocessor">.config</span>
+</pre></td></tr></table></figure>
+
+<p>然后将下面这段代码到smb.config末尾：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>[share]
+path = <span class="regexp">/home/share/</span>
+valid users = username
+public = <span class="literal">no</span>
+writeable = <span class="literal">yes</span>
+printable = <span class="literal">no</span>
+follow symlinks = <span class="literal">yes</span>
+wide symlinks = <span class="literal">yes</span>
+wide links = Yes
+unix extensions = <span class="literal">no</span>
+</pre></td></tr></table></figure>
+
+<h3 id="-">添加账户</h3>
+<p>如果用户名不是是当前用户名，则需要添加：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="built_in">sudo</span> useradd username
+</pre></td></tr></table></figure>
+
+<p>然后需要设置密码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="built_in">sudo</span> smbpasswd <span class="operator">-a</span> username
+</pre></td></tr></table></figure>
+
+<p>然后连续输入两次密码就OK了。</p>
+<h3 id="windows-">Windows映射</h3>
+<p>我的电脑-&gt;映射网络驱动器-&gt;输入<code>\\yourIP\share</code>-&gt;确定-&gt;输入用户名、密码-&gt;确定。<br>如果操作成功，在我的电脑-&gt;网络位置会多出一个盘符，如下图所示：
+<img src="../blog/img/samba.jpg" alt=""></p>
+<h2 id="-">心得体会</h2>
+<p>挺方便的，对于习惯windows开发的人员尤其有用。
+在windows上开发，保存文件的时候，自动就同步到Linux主机上了。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/diary/">diary</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/samba/">samba</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+<!-- Duoshuo Comment BEGIN -->
+  <div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"suluf"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- Duoshuo Comment END -->
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:www.suluf.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/04/11/javascript-inherit/">Javascript继承</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/10/pro-javascript-design-patterns-decorator/">Javascript设计模式 - 装饰者模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/31/pro-javascript-design-patterns-adapter/">Javascript设计模式 - 适配器模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/31/pro-javascript-design-patterns-facade/">Javascript设计模式 - 门面模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/24/pro-javascript-design-patterns-composite/">Javascript设计模式 - 组合模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/blog/">blog</a><small>5</small></li>
+  
+    <li><a href="/categories/book/">book</a><small>7</small></li>
+  
+    <li><a href="/categories/code/">code</a><small>1</small></li>
+  
+    <li><a href="/categories/diary/">diary</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Javascript/">Javascript</a><small>8</small></li>
+  
+    <li><a href="/tags/NodeJS/">NodeJS</a><small>5</small></li>
+  
+    <li><a href="/tags/copssh/">copssh</a><small>1</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>1</small></li>
+  
+    <li><a href="/tags/hexo/">hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/samba/">samba</a><small>1</small></li>
+  
+    <li><a href="/tags/source/">source</a><small>1</small></li>
+  
+    <li><a href="/tags/utils/">utils</a><small>1</small></li>
+  
+    <li><a href="/tags/设计模式/">设计模式</a><small>7</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Javascript/" style="font-size: 20.00px;">Javascript</a><a href="/tags/NodeJS/" style="font-size: 15.00px;">NodeJS</a><a href="/tags/copssh/" style="font-size: 10.00px;">copssh</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/hexo/" style="font-size: 12.50px;">hexo</a><a href="/tags/samba/" style="font-size: 10.00px;">samba</a><a href="/tags/source/" style="font-size: 10.00px;">source</a><a href="/tags/utils/" style="font-size: 10.00px;">utils</a><a href="/tags/设计模式/" style="font-size: 17.50px;">设计模式</a>
+  </div>
+</div>
+
+
+  
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=1848812323&verifier=294c9662&dpc=1"></iframe>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://zipperary.com/" title="Zippera's Blog">Zippera</a></li>
+</ul>
+</div>
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Fulme
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+1. database <- webserver
+
+2. database <- webserver  <- 前端页面缓存（squid）
+
+3. database <- webserver  <- 前端页面缓存（squid）
+            <- 页面片段缓存（ESI）
+
+4. database <- webserver  <- 前端页面缓存（squid）
+            <- 页面片段缓存（ESI）
+            <- 数据缓存
+
+5. database <- webserver  <- 前端页面缓存（squid）
+            <- 页面片段缓存（ESI）
+            <- 数据缓存
+            <- 分布式：负载均衡、状态同步、缓存同步、共享文件系统或存储
+
+6. database <- webserver  <- 前端页面缓存（squid）
+            <- 页面片段缓存（ESI）
+            <- 数据缓存
+            <- 分布式：负载均衡、状态同步、缓存同步、共享文件系统或存储
+  <- 分布式：数据库设计、调优
+
+7. database <- DAL <- webserver  <- 前端页面缓存（squid）
+                   <- 页面片段缓存（ESI）
+                   <- 数据缓存
+                   <- 分布式：负载均衡、状态同步、缓存同步、共享文件系统或存储
+  <- 分布式：数据库设计、调优
