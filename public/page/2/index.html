@@ -223,6 +223,261 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-03-02T05:54:23.000Z"><a href="/2014/03/02/hexo-source-reading-1/">2014-03-02</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/03/02/hexo-source-reading-1/">hexo源码解析系列（一）</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><a href="/blog/2014/02/28/hexo-source-reading-0/">前一篇</a>分析bin目录下<code>hexo</code>文件的作用。本章着重分析hexo的初始化。</p>
+<h2 id="hexo-">Hexo类</h2>
+<h3 id="-">方法</h3>
+<ul>
+<li>bootstrap</li>
+<li>call</li>
+<li>constant</li>
+</ul>
+<h3 id="-">属性</h3>
+<ul>
+<li>base_dir</li>
+<li>config</li>
+<li>core_dir</li>
+<li>env</li>
+<li>extend</li>
+<li>file</li>
+<li>lib_dir</li>
+<li>locals</li>
+<li>model</li>
+<li>plugin_dir</li>
+<li>post</li>
+<li>public_dir</li>
+<li>render</li>
+<li>rout</li>
+<li>scaffold</li>
+<li>scaffold_dir</li>
+<li>source</li>
+<li>source_dir</li>
+<li>theme</li>
+<li>theme_dir</li>
+<li>theme_script_dir</li>
+<li>util</li>
+<li>version</li>
+</ul>
+<h3 id="-">事件</h3>
+<ul>
+<li>exit</li>
+<li>generateAfter</li>
+<li>generateBefore</li>
+<li>new</li>
+<li>processAfter</li>
+<li>processBefore</li>
+<li>ready</li>
+<li>server</li>
+</ul>
+<h2 id="-">初始化</h2>
+<p>bin目录下的<code>hexo</code>文件将当前工作目录<code>cwd</code>和命令行参数<code>args</code>传递给lib目录的<code>init</code>模块后，<code>init</code>模块执行初始化操作。
+初始化的过程：</p>
+<ul>
+<li>实例化Hexo类  </li>
+<li>通过async模块加载各模块  </li>
+<li>调用hexo对象的call方法执行命令。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+</pre></td><td class="code"><pre>module.exports = <span class="function"><span class="keyword">function</span><span class="params">(cwd, args, callback)</span> {</span>
+  <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) callback = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>};
+
+  <span class="comment">// 实例化Hexo类</span>
+  <span class="keyword">var</span> hexo = global.hexo = <span class="keyword">new</span> Hexo();
+  <span class="keyword">var</span> configfile = args.config || <span class="string">'_config.yml'</span>;
+
+  <span class="comment">// 初始化环境</span>
+  hexo.bootstrap(cwd, args);
+  hexo.configfile = path.join(hexo.base_dir, configfile);
+
+  <span class="comment">// @sea https://github.com/caolan/async#eachSeries</span>
+  <span class="comment">// 加载loaders目录下地模块</span>
+  async.eachSeries([
+    <span class="string">'logger'</span>,
+    <span class="string">'extend'</span>,
+    <span class="string">'config'</span>,
+    <span class="string">'update'</span>,
+    <span class="string">'database'</span>,
+    <span class="string">'plugins'</span>,
+    <span class="string">'scripts'</span>
+  ], <span class="function"><span class="keyword">function</span><span class="params">(name, next)</span> {</span>
+    <span class="built_in">require</span>(<span class="string">'./loaders/'</span> + name)(next);
+  }, <span class="function"><span class="keyword">function</span><span class="params">(err)</span> {</span>
+    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;
+
+    <span class="comment">/**
+     * Fired when Hexo is ready.
+     *
+     * @event ready
+     * @for Hexo
+     */</span>
+
+    hexo.emit(<span class="string">'ready'</span>);
+
+    <span class="comment">// e.g., new, generate, deploy, publish.</span>
+    <span class="keyword">var</span> command = args._.shift();
+
+    <span class="keyword">if</span> (command) {
+      <span class="keyword">var</span> c = hexo.extend.console.get(command);
+
+      <span class="keyword">if</span> (!c || (!hexo.env.init && !c.options.init)) {
+        command = <span class="string">'help'</span>;
+      }
+    } <span class="keyword">else</span> {
+      command = <span class="string">'help'</span>;
+    }
+
+    <span class="keyword">if</span> (hexo.env.silent && command === <span class="string">'help'</span>) <span class="keyword">return</span> callback();
+
+    <span class="comment">// 执行命令</span>
+    hexo.call(command, args, <span class="function"><span class="keyword">function</span><span class="params">(err)</span> {</span>
+      <span class="keyword">if</span> (err) hexo.log.e(err);
+
+      <span class="comment">/**
+       * Fired when Hexo is about to exit.
+       *
+       * @event exit
+       * @for Hexo
+       */</span>
+
+      hexo.emit(<span class="string">'exit'</span>);
+
+      <span class="keyword">if</span> (!err) <span class="keyword">return</span> process.exit(<span class="number">0</span>);
+
+      <span class="keyword">var</span> logPath = path.join(hexo.base_dir, <span class="string">'debug.log'</span>),
+        FileStream = Logger.stream.File;
+
+      async.series([
+
+        <span class="function"><span class="keyword">function</span><span class="params">(next)</span> {</span>
+          FileStream.prepare(logPath, next);
+        },
+        <span class="function"><span class="keyword">function</span><span class="params">(next)</span> {</span>
+          FileStream.dump(logPath, hexo.log, next);
+        }
+      ], <span class="function"><span class="keyword">function</span><span class="params">(err)</span> {</span>
+        <span class="keyword">if</span> (err) <span class="keyword">return</span> log.e(err);
+
+        process.exit(<span class="number">1</span>);
+      });
+    });
+  });
+};
+</pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-02-28T09:01:52.000Z"><a href="/2014/02/28/hexo-source-reading-0/">2014-02-28</a></time>
       
       
@@ -600,6 +855,10 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   <ul class="entry">
     
       <li>
+        <a href="/2014/04/17/javascript-copy/">Javascript复制到剪切板</a>
+      </li>
+    
+      <li>
         <a href="/2014/04/11/javascript-inherit/">Javascript继承</a>
       </li>
     
@@ -613,10 +872,6 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
     
       <li>
         <a href="/2014/03/31/pro-javascript-design-patterns-facade/">Javascript设计模式 - 门面模式</a>
-      </li>
-    
-      <li>
-        <a href="/2014/03/24/pro-javascript-design-patterns-composite/">Javascript设计模式 - 组合模式</a>
       </li>
     
   </ul>
@@ -634,7 +889,7 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   
     <li><a href="/categories/code/">code</a><small>1</small></li>
   
-    <li><a href="/categories/diary/">diary</a><small>2</small></li>
+    <li><a href="/categories/diary/">diary</a><small>3</small></li>
   
   </ul>
 </div>
@@ -645,7 +900,7 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/tags/Javascript/">Javascript</a><small>8</small></li>
+    <li><a href="/tags/Javascript/">Javascript</a><small>9</small></li>
   
     <li><a href="/tags/NodeJS/">NodeJS</a><small>5</small></li>
   
@@ -659,7 +914,7 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   
     <li><a href="/tags/source/">source</a><small>1</small></li>
   
-    <li><a href="/tags/utils/">utils</a><small>1</small></li>
+    <li><a href="/tags/utils/">utils</a><small>2</small></li>
   
     <li><a href="/tags/设计模式/">设计模式</a><small>7</small></li>
   
@@ -671,7 +926,7 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/Javascript/" style="font-size: 20.00px;">Javascript</a><a href="/tags/NodeJS/" style="font-size: 15.00px;">NodeJS</a><a href="/tags/copssh/" style="font-size: 10.00px;">copssh</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/hexo/" style="font-size: 12.50px;">hexo</a><a href="/tags/samba/" style="font-size: 10.00px;">samba</a><a href="/tags/source/" style="font-size: 10.00px;">source</a><a href="/tags/utils/" style="font-size: 10.00px;">utils</a><a href="/tags/设计模式/" style="font-size: 17.50px;">设计模式</a>
+    <a href="/tags/Javascript/" style="font-size: 20.00px;">Javascript</a><a href="/tags/NodeJS/" style="font-size: 16.00px;">NodeJS</a><a href="/tags/copssh/" style="font-size: 10.00px;">copssh</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/hexo/" style="font-size: 14.00px;">hexo</a><a href="/tags/samba/" style="font-size: 10.00px;">samba</a><a href="/tags/source/" style="font-size: 10.00px;">source</a><a href="/tags/utils/" style="font-size: 12.00px;">utils</a><a href="/tags/设计模式/" style="font-size: 18.00px;">设计模式</a>
   </div>
 </div>
 
