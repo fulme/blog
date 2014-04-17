@@ -2,6 +2,7 @@ title: Javascript设计模式 - 装饰者模式
 date: 2014-04-10 16:59:24
 tags: [Javascript, 设计模式]
 categories: book
+keywords: Javascript,design patterns,设计模式,decorator pattern,装饰者模式
 ---
 
 装饰者模式用来透明地把对象包装在具有同样接口的另一对象之中。

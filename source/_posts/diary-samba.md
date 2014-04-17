@@ -2,6 +2,7 @@ title: samba学习笔记
 date: 2014-03-19 08:49:51
 tags: [samba]
 categories: diary
+keywords: samba,Linux和windows共享目录
 
 ---
 

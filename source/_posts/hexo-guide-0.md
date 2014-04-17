@@ -2,6 +2,7 @@ title: hexo系列教程（一） - hexo简介
 date: 2014-02-11 16:10:30
 tags: [hexo, NodeJS]
 categories: blog
+keywords: hexo
 
 ---
 

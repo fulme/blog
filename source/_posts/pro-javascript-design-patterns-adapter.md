@@ -2,6 +2,7 @@ title: Javascript设计模式 - 适配器模式
 date: 2014-03-31 17:17:55
 tags: [Javascript, 设计模式]
 categories: book
+keywords: Javascript,design patterns,设计模式,adapter pattern,适配器模式
 ---
 
 适配器模式可用来在现有接口与不兼容的类之间进行适配。

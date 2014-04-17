@@ -2,6 +2,7 @@ title: nodejs新特性cluster的使用
 date: 2014-02-08 16:46:10
 categories: blog
 tags: [NodeJS]
+keywords: Javascript,NodeJS,cluster
 ---
 
 ------

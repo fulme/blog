@@ -2,6 +2,7 @@ title: hexo系列教程（二） - 搭建hexo博客
 date: 2014-02-11 17:03:48
 tags: [hexo, NodeJS]
 categories: blog
+keywords: hexo
 
 ---
 

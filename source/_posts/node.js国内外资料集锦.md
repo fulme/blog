@@ -2,6 +2,7 @@ title: node.js国内外资料集锦
 date: 2014-02-08 15:31:50
 categories: blog
 tags: [NodeJS]
+keywords: Javascript,NodeJS
 ---
 
 ------

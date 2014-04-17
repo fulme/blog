@@ -2,6 +2,7 @@ title: Javascript设计模式 - 单体模式
 date: 2014-03-20 14:04:59
 tags: [Javascript, 设计模式]
 categories: book
+keywords: Javascript,design patterns,设计模式,singleton pattern,单体模式
 ---
 
 [Javascript设计模式](http://www.apress.com/9781590599082)这本书值得一看。

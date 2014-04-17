@@ -2,6 +2,7 @@ title: Javascript设计模式 - 工厂模式
 date: 2014-03-20 16:33:37
 tags: [Javascript, 设计模式]
 categories: book
+keywords: Javascript,design patterns,设计模式,factory pattern,工厂模式
 ---
 
 工厂模式是一种有助于消除两个类之间依赖性的模式，它使用一个方法来决定究竟实例化哪一个具体类。

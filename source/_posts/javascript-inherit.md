@@ -2,6 +2,8 @@ title: Javascript继承
 date: 2014-04-11 10:04:23
 tags: [Javascript, utils]
 categories: diary
+keywords: Javascript,extend,inherit,继承,Javascript继承
+
 ---
 
 

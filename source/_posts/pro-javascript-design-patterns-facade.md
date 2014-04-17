@@ -2,6 +2,7 @@ title: Javascript设计模式 - 门面模式
 date: 2014-03-31 11:41:50
 tags: [Javascript, 设计模式]
 categories: book
+keywords: Javascript,design patterns,设计模式,facade pattern,门面模式
 ---
 
 所谓门面，就是一个功能的快捷入口，就如window系统桌面的一个快捷方式，点击以后会执行快捷方式对应的一个应用程序。

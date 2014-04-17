@@ -2,6 +2,7 @@ title: hexo源码解析系列（零）
 date: 2014-02-28 17:01:52
 tags: [hexo, NodeJS, source]
 categories: [code]
+keywords: hexo,源码
 
 ---
 

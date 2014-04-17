@@ -2,6 +2,7 @@ title: Windows上搭建git服务器
 date: 2014-02-17 16:25:09
 tags: [git, copssh]
 categories: blog
+keywords: Windows,git,copssh
 ---
 
 ## 需要软件

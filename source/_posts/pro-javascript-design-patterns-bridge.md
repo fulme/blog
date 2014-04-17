@@ -2,6 +2,7 @@ title: Javascript设计模式 - 桥接模式
 date: 2014-03-24 14:35:38
 tags: [Javascript, 设计模式]
 categories: book
+keywords: Javascript,design patterns,设计模式,bridge pattern,桥接模式
 ---
 
 桥接模式的作用在于将抽象与其实现分离，以便各自独立变化。

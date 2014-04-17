@@ -2,6 +2,7 @@ title: Javascript设计模式 - 组合模式
 date: 2014-03-24 15:26:55
 tags: [Javascript, 设计模式]
 categories: book
+keywords: Javascript,design patterns,设计模式,composite pattern,组合模式
 ---
 
 组合模式是专门为创建Web上的动态界面量身定制的。将一批具有相同操作的对象组织成一个树形结构，可以用一条命令在多个对象上激发复杂或者递归调用。
