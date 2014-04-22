@@ -223,6 +223,121 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-03-19T00:49:51.000Z"><a href="/2014/03/19/diary-samba/">2014-03-19</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/03/19/diary-samba/">samba学习笔记</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="-samba">什么是samba</h2>
+<p><a href="http://baike.baidu.com/link?url=fpCneip0_fVu6C1m7k9XFTiFilCi88C4ggR0Eya-ZA5kFsOCeizBnVke-cMze54G" target="_blank">samba</a>是Unix和Linux上实现SMB协议的免费软件。
+<a href="http://baike.baidu.com/view/262410.htm" target="_blank">SMB</a>（Server Messages Blck, 信息服务块）是局域网上共享文件和打印机的通信协议，它为局域网内不同计算机提供文件及打印机等资源的共享服务。</p>
+<h2 id="-samba">为什么要samba</h2>
+<p>为了实现Windows主机与Linux主机之间的资源共享，Linux操作系统提供了samba服务，samba为两种操作系统架起了一座桥梁，使得Windows与Linux系统之间方便地实现共享。本人的用途：在开发网站的时候需要配合后端做一些模板替换及渲染工作，且代码需要部署到Linux主机上，但是本人已经习惯了Windows上的开发环境，于是samba派上了用场，通过安装和配置samba，然后在Windows上做一个文件映射就可以实现，在Windows上开发实时同步到Linux主机上了。具体的安装配置，接下来会讲。</p>
+<h2 id="-samba">安装samba</h2>
+<p>默认情况下，Linux系统已经安装samba了，通过如下的命令可以查看：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>rpm -qa | grep samp
+
+samba-<span class="number">3.0</span><span class="number">.33</span>-<span class="number">3.14</span><span class="preprocessor">.el</span>5
+samba-common-<span class="number">3.0</span><span class="number">.33</span>-<span class="number">3.14</span><span class="preprocessor">.el</span>5
+</pre></td></tr></table></figure>
+
+<p>如果没有安装，可以通过如下命令安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>rpm -ivh samba-<span class="number">3.0</span><span class="number">.33</span>-<span class="number">3.29</span><span class="preprocessor">.el</span>5_6<span class="number">.2</span><span class="preprocessor">.i</span>386<span class="preprocessor">.rpm</span> -f --nodeps
+rpm -ivh samba-client-<span class="number">3.0</span><span class="number">.33</span>-<span class="number">3.29</span><span class="preprocessor">.el</span>5_6<span class="number">.2</span><span class="preprocessor">.i</span>386<span class="preprocessor">.rpm</span>  -f --nodeps
+rpm -ivh samba-common-<span class="number">3.0</span><span class="number">.33</span>-<span class="number">3.29</span><span class="preprocessor">.el</span>5_6<span class="number">.2</span><span class="preprocessor">.i</span>386<span class="preprocessor">.rpm</span> -f --nodeps
+</pre></td></tr></table></figure>
+
+<p>安装完成后就可以通过上面的查询命令查看了。</p>
+<h2 id="-samba">配置samba</h2>
+<p>samba的配置信息一般都在<code>/etc/samba</code>目录下，主配置文件为<code>smb.conf</code>，文件中记录着大量规则和共享信息。在配置之前有必要先了解一下samba工作原理。<br><strong>原理</strong>：<em>客户端发起访问工项目的请求，samba服务接收到请求以后查看smb.conf文件，如果共享目录存在且访问者有权限则允许访问，最后将访问过程中系统的信息以及采集的用户访问行为信息存放到日志中。</em></p>
+<h3 id="-">修改配置文件</h3>
+<p>首先备份一下配置文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>cd /etc/sabma
+sudo mv smb<span class="preprocessor">.config</span> smb<span class="preprocessor">.config</span><span class="preprocessor">.bak</span>
+</pre></td></tr></table></figure>
+
+<p>新建一个配置文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>touch smb<span class="preprocessor">.config</span>
+</pre></td></tr></table></figure>
+
+<p>然后将下面这段代码到smb.config末尾：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>[share]
+path = <span class="regexp">/home/share/</span>
+valid users = username
+public = <span class="literal">no</span>
+writeable = <span class="literal">yes</span>
+printable = <span class="literal">no</span>
+follow symlinks = <span class="literal">yes</span>
+wide symlinks = <span class="literal">yes</span>
+wide links = Yes
+unix extensions = <span class="literal">no</span>
+</pre></td></tr></table></figure>
+
+<h3 id="-">添加账户</h3>
+<p>如果用户名不是是当前用户名，则需要添加：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="built_in">sudo</span> useradd username
+</pre></td></tr></table></figure>
+
+<p>然后需要设置密码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="built_in">sudo</span> smbpasswd <span class="operator">-a</span> username
+</pre></td></tr></table></figure>
+
+<p>然后连续输入两次密码就OK了。</p>
+<h3 id="windows-">Windows映射</h3>
+<p>我的电脑-&gt;映射网络驱动器-&gt;输入<code>\\yourIP\share</code>-&gt;确定-&gt;输入用户名、密码-&gt;确定。<br>如果操作成功，在我的电脑-&gt;网络位置会多出一个盘符，如下图所示：
+<img src="../blog/img/samba.jpg" alt=""></p>
+<h2 id="-">心得体会</h2>
+<p>挺方便的，对于习惯windows开发的人员尤其有用。
+在windows上开发，保存文件的时候，自动就同步到Linux主机上了。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-03-02T05:54:23.000Z"><a href="/2014/03/02/hexo-source-reading-1/">2014-03-02</a></time>
       
       
@@ -855,6 +970,10 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   <ul class="entry">
     
       <li>
+        <a href="/2014/04/22/pro-javascript-design-patterns-flyweight/">Javascript设计模式 - 享元模式</a>
+      </li>
+    
+      <li>
         <a href="/2014/04/17/javascript-copy/">Javascript复制到剪切板</a>
       </li>
     
@@ -870,10 +989,6 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
         <a href="/2014/03/31/pro-javascript-design-patterns-adapter/">Javascript设计模式 - 适配器模式</a>
       </li>
     
-      <li>
-        <a href="/2014/03/31/pro-javascript-design-patterns-facade/">Javascript设计模式 - 门面模式</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -885,7 +1000,7 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   
     <li><a href="/categories/blog/">blog</a><small>5</small></li>
   
-    <li><a href="/categories/book/">book</a><small>7</small></li>
+    <li><a href="/categories/book/">book</a><small>8</small></li>
   
     <li><a href="/categories/code/">code</a><small>1</small></li>
   
@@ -900,7 +1015,7 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/tags/Javascript/">Javascript</a><small>9</small></li>
+    <li><a href="/tags/Javascript/">Javascript</a><small>10</small></li>
   
     <li><a href="/tags/NodeJS/">NodeJS</a><small>5</small></li>
   
@@ -916,7 +1031,7 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   
     <li><a href="/tags/utils/">utils</a><small>2</small></li>
   
-    <li><a href="/tags/设计模式/">设计模式</a><small>7</small></li>
+    <li><a href="/tags/设计模式/">设计模式</a><small>8</small></li>
   
   </ul>
 </div>
