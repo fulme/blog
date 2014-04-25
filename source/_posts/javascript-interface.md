@@ -76,10 +76,14 @@ Interface.ensureImplements = function (obj) {
 ``` js
 var Interface1 = new Interface('Interface1', ['method1', 'method2']);
 var Interface2 = new Interface('Interface2', ['method3', 'method4']);
-function SomeClass = function () {
-  // 实现Interface1和Interface2的方法
-  // TODO something
-}
+function SomeClass = function () {}
+// 实现Interface1和Interface2的方法
+someClass.prototype = {
+  method1: function() {},
+  method2: function() {},
+  method3: function() {},
+  method4: function() {}
+};
 
 
 function OhterClass = function (someObj) {

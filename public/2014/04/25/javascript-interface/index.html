@@ -376,12 +376,20 @@ Interface.ensureImplements = function (obj) {
 17
 18
 19
+20
+21
+22
+23
 </pre></td><td class="code"><pre><span class="keyword">var</span> Interface1 = <span class="keyword">new</span> Interface(<span class="string">'Interface1'</span>, [<span class="string">'method1'</span>, <span class="string">'method2'</span>]);
 <span class="keyword">var</span> Interface2 = <span class="keyword">new</span> Interface(<span class="string">'Interface2'</span>, [<span class="string">'method3'</span>, <span class="string">'method4'</span>]);
-<span class="function"><span class="keyword">function</span> <span class="title">SomeClass</span> = <span class="title">function</span> <span class="params">()</span> {</span>
-  <span class="comment">// 实现Interface1和Interface2的方法</span>
-  <span class="comment">// TODO something</span>
-}
+<span class="function"><span class="keyword">function</span> <span class="title">SomeClass</span> = <span class="title">function</span> <span class="params">()</span> {</span>}
+<span class="comment">// 实现Interface1和Interface2的方法</span>
+someClass.prototype = {
+  method1: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>},
+  method2: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>},
+  method3: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>},
+  method4: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>}
+};
 
 
 <span class="function"><span class="keyword">function</span> <span class="title">OhterClass</span> = <span class="title">function</span> <span class="params">(someObj)</span> {</span>
