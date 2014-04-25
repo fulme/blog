@@ -227,6 +227,149 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-03-20T08:33:37.000Z"><a href="/2014/03/20/pro-javascript-design-patterns-factory/">2014-03-20</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/03/20/pro-javascript-design-patterns-factory/">Javascript设计模式 - 工厂模式</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>工厂模式是一种有助于消除两个类之间依赖性的模式，它使用一个方法来决定究竟实例化哪一个具体类。</p>
+<h3 id="-">基本结构</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="code"><pre><span class="keyword">var</span> Factory = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>};
+Factory.prototype = {
+  method1: <span class="function"><span class="keyword">function</span><span class="params">(model)</span> {</span>
+    <span class="keyword">var</span> obj;
+
+    <span class="keyword">switch</span> (model) {
+      <span class="keyword">case</span> <span class="string">'model1'</span>:
+      obj = <span class="keyword">new</span> Class1();
+      <span class="keyword">break</span>;
+      <span class="keyword">case</span> <span class="string">'model2'</span>:
+      obj = <span class="keyword">new</span> Class2();
+      <span class="keyword">break</span>;
+    }
+
+    <span class="keyword">return</span> obj;
+  },
+
+  method2: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>}
+};
+</pre></td></tr></table></figure>
+
+<h3 id="-">主要用途</h3>
+<ul>
+<li>所实例化的类的类型不能在开发期间确定，就是随时可能有新的类加入的情况</li>
+<li>因环境不同可能有不同实例的情况（如：跨浏览器的Ajax）。</li>
+</ul>
+<p>同样为了简洁，不再延伸此模式的高级形式。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-03-20T06:04:59.000Z"><a href="/2014/03/20/pro-javascript-design-patterns-singleton/">2014-03-20</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/03/20/pro-javascript-design-patterns-singleton/">Javascript设计模式 - 单体模式</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><a href="http://www.apress.com/9781590599082" target="_blank">Javascript设计模式</a>这本书值得一看。
+本系列文章都是这本书的学习笔记。书写的再好，还是会有一些上下文情景或者是一些相关说明与介绍。
+虽然此书的每一个部分都很精彩，内容也很精简，但是为了方便自己理解，还是决定做一个笔记以加深映象。</p>
+<p>单体模式主要用于划分命名空间或者说模块划分，将一批有一定关联的属性和方法组织在一起。  </p>
+<h3 id="-">基本结构如下</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="keyword">var</span> sigleton = {
+  <span class="comment">// 属性</span>
+  attr1: <span class="literal">true</span>,
+  attr2: <span class="number">10</span>,
+
+  <span class="comment">// 方法</span>
+  method1: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>},
+  method2: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>},
+};
+</pre></td></tr></table></figure>
+
+<h3 id="-">主要用途</h3>
+<ul>
+<li>将一个比较大功能细分成几个小的模块，每个模块独占一个文件和一个全局名称</li>
+<li>将一些功能性的函数（不太会调用其他模块函数）组织在一个文件（模块）中，方便各处调用。</li>
+</ul>
+<p>当然此模式还有一些高级形式，为了简洁暂不介绍。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-03-19T00:49:51.000Z"><a href="/2014/03/19/diary-samba/">2014-03-19</a></time>
       
       
@@ -975,6 +1118,14 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   <ul class="entry">
     
       <li>
+        <a href="/2014/04/25/javascript-interface/">Javascript接口</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/25/pro-javascript-design-patterns-proxy/">Javascript设计模式 - 代理模式</a>
+      </li>
+    
+      <li>
         <a href="/2014/04/22/pro-javascript-design-patterns-flyweight/">Javascript设计模式 - 享元模式</a>
       </li>
     
@@ -984,14 +1135,6 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
     
       <li>
         <a href="/2014/04/11/javascript-inherit/">Javascript继承</a>
-      </li>
-    
-      <li>
-        <a href="/2014/04/10/pro-javascript-design-patterns-decorator/">Javascript设计模式 - 装饰者模式</a>
-      </li>
-    
-      <li>
-        <a href="/2014/03/31/pro-javascript-design-patterns-adapter/">Javascript设计模式 - 适配器模式</a>
       </li>
     
   </ul>
@@ -1005,11 +1148,11 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   
     <li><a href="/categories/blog/">blog</a><small>5</small></li>
   
-    <li><a href="/categories/book/">book</a><small>8</small></li>
+    <li><a href="/categories/book/">book</a><small>9</small></li>
   
     <li><a href="/categories/code/">code</a><small>1</small></li>
   
-    <li><a href="/categories/diary/">diary</a><small>3</small></li>
+    <li><a href="/categories/diary/">diary</a><small>4</small></li>
   
   </ul>
 </div>
@@ -1020,7 +1163,7 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/tags/Javascript/">Javascript</a><small>10</small></li>
+    <li><a href="/tags/Javascript/">Javascript</a><small>12</small></li>
   
     <li><a href="/tags/NodeJS/">NodeJS</a><small>5</small></li>
   
@@ -1034,9 +1177,9 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   
     <li><a href="/tags/source/">source</a><small>1</small></li>
   
-    <li><a href="/tags/utils/">utils</a><small>2</small></li>
+    <li><a href="/tags/utils/">utils</a><small>3</small></li>
   
-    <li><a href="/tags/设计模式/">设计模式</a><small>8</small></li>
+    <li><a href="/tags/设计模式/">设计模式</a><small>9</small></li>
   
   </ul>
 </div>
@@ -1046,7 +1189,7 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/Javascript/" style="font-size: 20.00px;">Javascript</a><a href="/tags/NodeJS/" style="font-size: 16.00px;">NodeJS</a><a href="/tags/copssh/" style="font-size: 10.00px;">copssh</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/hexo/" style="font-size: 14.00px;">hexo</a><a href="/tags/samba/" style="font-size: 10.00px;">samba</a><a href="/tags/source/" style="font-size: 10.00px;">source</a><a href="/tags/utils/" style="font-size: 12.00px;">utils</a><a href="/tags/设计模式/" style="font-size: 18.00px;">设计模式</a>
+    <a href="/tags/Javascript/" style="font-size: 20.00px;">Javascript</a><a href="/tags/NodeJS/" style="font-size: 15.00px;">NodeJS</a><a href="/tags/copssh/" style="font-size: 10.00px;">copssh</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/hexo/" style="font-size: 12.50px;">hexo</a><a href="/tags/samba/" style="font-size: 10.00px;">samba</a><a href="/tags/source/" style="font-size: 10.00px;">source</a><a href="/tags/utils/" style="font-size: 12.50px;">utils</a><a href="/tags/设计模式/" style="font-size: 17.50px;">设计模式</a>
   </div>
 </div>
 

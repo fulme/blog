@@ -227,6 +227,247 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-04-25T02:45:09.000Z"><a href="/2014/04/25/javascript-interface/">2014-04-25</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/25/javascript-interface/">Javascript接口</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>接口提供了一种说明一个对象应该具有哪些方法的手段。<br>Javascript语言本身没有内置接口实现，下面通过一个工具类模拟实现了此功能。</p>
+<h3 id="-">实现</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+</pre></td><td class="code"><pre>/**
+ * 构造函数
+ * @param {String} name    类名
+ * @param {Array.&lt;String&gt;} 类方法名列表
+ */
+var Interface = function (name, methods) {
+  if (arguments.length &lt; 2) {
+    // 参数数目不对，抛异常
+    throw Error('Interface constructor called with' + 
+        arguments.length +
+        'arguments, but excepted exactly 2.');
+  }
+
+  this.name = name;
+  this.methods = methods;
+
+  for (var i = 0, len = methods.length; i &lt; len; i++) {
+    var method = methods[i];
+
+    if (typeof method !== 'string') {
+      // Interface 构造函数只接受字符串个是的方法名
+      throw Error('Interface constructor excepts method names to be passed in as string');
+    }
+
+    this.methods.push(method);
+  }
+};
+
+// Interface的静态方法
+Interface.ensureImplements = function (obj) {
+  if (arguments.length &lt; 2) {
+    // 参数数目不对，抛异常
+    throw Error('Interface constructor called with' + 
+        arguments.length +
+        'arguments, but excepted exactly 2.');
+  }
+
+  // 遍历接口(arguments[0]即obj是待检测的对象)
+  for (var i = 1, len = arguments.length; i &lt; len) {
+    var interface = arguments[i];
+    var methods = interface.methods;
+    
+    // 如果不是Interface的实例，抛异常
+    if (interface.constructor !== Interface) {
+      throw Error('Function Interface.ensureImplements 
+        excepts arguments two and above to be instances of Interface');
+    }
+
+    // 检查对象是否实现了接口的方法
+    for (var j = 0, methodsLen = methods.length; j &lt; methodsLen; j++) {
+      var method = methods[j];
+
+      // 如果没有实现任意一个接口的方法都抛异常
+      if (!(obj[method] && typeof obj[method] !== 'function')) {
+        throw Error('obj does not implement the ' + interface.name + 
+            ' interface.method ' + method +  ' was not fond.');
+      }
+    }
+  }
+};
+</pre></td></tr></table></figure>
+
+<h3 id="-">例子</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="code"><pre><span class="keyword">var</span> Interface1 = <span class="keyword">new</span> Interface(<span class="string">'Interface1'</span>, [<span class="string">'method1'</span>, <span class="string">'method2'</span>]);
+<span class="keyword">var</span> Interface2 = <span class="keyword">new</span> Interface(<span class="string">'Interface2'</span>, [<span class="string">'method3'</span>, <span class="string">'method4'</span>]);
+<span class="function"><span class="keyword">function</span> <span class="title">SomeClass</span> = <span class="title">function</span> <span class="params">()</span> {</span>
+  <span class="comment">// 实现Interface1和Interface2的方法</span>
+  <span class="comment">// TODO something</span>
+}
+
+
+<span class="function"><span class="keyword">function</span> <span class="title">OhterClass</span> = <span class="title">function</span> <span class="params">(someObj)</span> {</span>
+  <span class="comment">// 如果someObj号称实现了Interface1和Interface2两个接口，</span>
+  <span class="comment">// 则可以通过下边这一句调用对其进行检测</span>
+  Interface1.ensureImplements(someObj, Interface1, Interface2);
+  
+  <span class="keyword">this</span>.someObj = someObj;
+  <span class="comment">// TODO something</span>
+}
+
+<span class="comment">// 调用</span>
+OhterClass(<span class="keyword">new</span> SomeClass());
+</pre></td></tr></table></figure>
+
+<h3 id="-">心得体会</h3>
+<p>接口的应用可以是很好地解耦各个模块，有利大项目、多人合作开发。<br>其缺点是实现比较繁琐，也会增加很多的函数调用从而会影响性能，多多少少也有悖Javascript灵活性的特点。<br>在实际的开发中还没有用过，通常在实现一个类或者对象的时候显示地暴露或者在模块文件描述的时候说明一下接口（方法）即可。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-25T01:27:09.000Z"><a href="/2014/04/25/pro-javascript-design-patterns-proxy/">2014-04-25</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/25/pro-javascript-design-patterns-proxy/">Javascript设计模式 - 代理模式</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>代理模式最基本的形式就是实现对另外的对象（本体）进行访问控制，实现与本体相同的接口。<br><strong>注意：</strong>代理对象不添加新的功能，具体的功能都在本体实现。</p>
+<h3 id="-">基本结构</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>
+
+</pre></td></tr></table></figure>
+
+<h3 id="-">主要用途</h3>
+<h3 id="-">心得体会</h3>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-04-22T10:31:08.000Z"><a href="/2014/04/22/pro-javascript-design-patterns-flyweight/">2014-04-22</a></time>
       
       
@@ -721,7 +962,7 @@ alert(author.getBlog()); <span class="comment">// 'www.suluf.com/blog/'</span>
     </header>
     <div class="entry">
       
-        <p>装饰者模式用来透明地把对象包装在具有同样接口的另一对象之中。</p>
+        <p>装饰者模式用来透明地把对象包装在具有同样接口的另一对象之中。<br>下面会用到一个类式继承工具类函数：<a href="/2014/04/11/javascript-inherit/">extend</a>。</p>
 <h3 id="-">基本结构</h3>
 <figure class="highlight js"><table><tr><td class="gutter"><pre>1
 2
@@ -807,6 +1048,7 @@ alert(author.getBlog()); <span class="comment">// 'www.suluf.com/blog/'</span>
 82
 83
 84
+85
 </pre></td><td class="code"><pre><span class="comment">// 抽象类（装饰者基类）</span>
 <span class="keyword">var</span> Decorator = <span class="function"><span class="keyword">function</span><span class="params">(Obj)</span> {</span>
   <span class="keyword">this</span>.obj = obj;  
@@ -833,6 +1075,7 @@ SomeDecorator.prototype = {
     <span class="keyword">return</span> <span class="keyword">this</span>.obj.method2() + <span class="string">'some'</span>;
   }
 };
+<span class="comment">// 见开头部分的介绍</span>
 extend(SomeDecorator, Decorator);
 
 <span class="comment">// 具体类（具体装饰者2）</span>
@@ -1277,152 +1520,11 @@ addEvent(element, Event, doSomethingBridge);
 
 
   
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-03-20T08:33:37.000Z"><a href="/2014/03/20/pro-javascript-design-patterns-factory/">2014-03-20</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/03/20/pro-javascript-design-patterns-factory/">Javascript设计模式 - 工厂模式</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>工厂模式是一种有助于消除两个类之间依赖性的模式，它使用一个方法来决定究竟实例化哪一个具体类。</p>
-<h3 id="-">基本结构</h3>
-<figure class="highlight js"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-</pre></td><td class="code"><pre><span class="keyword">var</span> Factory = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>};
-Factory.prototype = {
-  method1: <span class="function"><span class="keyword">function</span><span class="params">(model)</span> {</span>
-    <span class="keyword">var</span> obj;
-
-    <span class="keyword">switch</span> (model) {
-      <span class="keyword">case</span> <span class="string">'model1'</span>:
-      obj = <span class="keyword">new</span> Class1();
-      <span class="keyword">break</span>;
-      <span class="keyword">case</span> <span class="string">'model2'</span>:
-      obj = <span class="keyword">new</span> Class2();
-      <span class="keyword">break</span>;
-    }
-
-    <span class="keyword">return</span> obj;
-  },
-
-  method2: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>}
-};
-</pre></td></tr></table></figure>
-
-<h3 id="-">主要用途</h3>
-<ul>
-<li>所实例化的类的类型不能在开发期间确定，就是随时可能有新的类加入的情况</li>
-<li>因环境不同可能有不同实例的情况（如：跨浏览器的Ajax）。</li>
-</ul>
-<p>同样为了简洁，不再延伸此模式的高级形式。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-03-20T06:04:59.000Z"><a href="/2014/03/20/pro-javascript-design-patterns-singleton/">2014-03-20</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/03/20/pro-javascript-design-patterns-singleton/">Javascript设计模式 - 单体模式</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p><a href="http://www.apress.com/9781590599082" target="_blank">Javascript设计模式</a>这本书值得一看。
-本系列文章都是这本书的学习笔记。书写的再好，还是会有一些上下文情景或者是一些相关说明与介绍。
-虽然此书的每一个部分都很精彩，内容也很精简，但是为了方便自己理解，还是决定做一个笔记以加深映象。</p>
-<p>单体模式主要用于划分命名空间或者说模块划分，将一批有一定关联的属性和方法组织在一起。  </p>
-<h3 id="-">基本结构如下</h3>
-<figure class="highlight js"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-</pre></td><td class="code"><pre><span class="keyword">var</span> sigleton = {
-  <span class="comment">// 属性</span>
-  attr1: <span class="literal">true</span>,
-  attr2: <span class="number">10</span>,
-
-  <span class="comment">// 方法</span>
-  method1: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>},
-  method2: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>},
-};
-</pre></td></tr></table></figure>
-
-<h3 id="-">主要用途</h3>
-<ul>
-<li>将一个比较大功能细分成几个小的模块，每个模块独占一个文件和一个全局名称</li>
-<li>将一些功能性的函数（不太会调用其他模块函数）组织在一个文件（模块）中，方便各处调用。</li>
-</ul>
-<p>当然此模式还有一些高级形式，为了简洁暂不介绍。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
 
   <nav id="pagination">
   
+  
+    <a href="/tags/Javascript/page/2/" class="alignright next">Next</a>
   
   <div class="clearfix"></div>
 </nav>
@@ -1441,6 +1543,14 @@ Factory.prototype = {
   <ul class="entry">
     
       <li>
+        <a href="/2014/04/25/javascript-interface/">Javascript接口</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/25/pro-javascript-design-patterns-proxy/">Javascript设计模式 - 代理模式</a>
+      </li>
+    
+      <li>
         <a href="/2014/04/22/pro-javascript-design-patterns-flyweight/">Javascript设计模式 - 享元模式</a>
       </li>
     
@@ -1450,14 +1560,6 @@ Factory.prototype = {
     
       <li>
         <a href="/2014/04/11/javascript-inherit/">Javascript继承</a>
-      </li>
-    
-      <li>
-        <a href="/2014/04/10/pro-javascript-design-patterns-decorator/">Javascript设计模式 - 装饰者模式</a>
-      </li>
-    
-      <li>
-        <a href="/2014/03/31/pro-javascript-design-patterns-adapter/">Javascript设计模式 - 适配器模式</a>
       </li>
     
   </ul>
@@ -1471,11 +1573,11 @@ Factory.prototype = {
   
     <li><a href="/categories/blog/">blog</a><small>5</small></li>
   
-    <li><a href="/categories/book/">book</a><small>8</small></li>
+    <li><a href="/categories/book/">book</a><small>9</small></li>
   
     <li><a href="/categories/code/">code</a><small>1</small></li>
   
-    <li><a href="/categories/diary/">diary</a><small>3</small></li>
+    <li><a href="/categories/diary/">diary</a><small>4</small></li>
   
   </ul>
 </div>
@@ -1486,7 +1588,7 @@ Factory.prototype = {
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/tags/Javascript/">Javascript</a><small>10</small></li>
+    <li><a href="/tags/Javascript/">Javascript</a><small>12</small></li>
   
     <li><a href="/tags/NodeJS/">NodeJS</a><small>5</small></li>
   
@@ -1500,9 +1602,9 @@ Factory.prototype = {
   
     <li><a href="/tags/source/">source</a><small>1</small></li>
   
-    <li><a href="/tags/utils/">utils</a><small>2</small></li>
+    <li><a href="/tags/utils/">utils</a><small>3</small></li>
   
-    <li><a href="/tags/设计模式/">设计模式</a><small>8</small></li>
+    <li><a href="/tags/设计模式/">设计模式</a><small>9</small></li>
   
   </ul>
 </div>
@@ -1512,7 +1614,7 @@ Factory.prototype = {
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/Javascript/" style="font-size: 20.00px;">Javascript</a><a href="/tags/NodeJS/" style="font-size: 16.00px;">NodeJS</a><a href="/tags/copssh/" style="font-size: 10.00px;">copssh</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/hexo/" style="font-size: 14.00px;">hexo</a><a href="/tags/samba/" style="font-size: 10.00px;">samba</a><a href="/tags/source/" style="font-size: 10.00px;">source</a><a href="/tags/utils/" style="font-size: 12.00px;">utils</a><a href="/tags/设计模式/" style="font-size: 18.00px;">设计模式</a>
+    <a href="/tags/Javascript/" style="font-size: 20.00px;">Javascript</a><a href="/tags/NodeJS/" style="font-size: 15.00px;">NodeJS</a><a href="/tags/copssh/" style="font-size: 10.00px;">copssh</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/hexo/" style="font-size: 12.50px;">hexo</a><a href="/tags/samba/" style="font-size: 10.00px;">samba</a><a href="/tags/source/" style="font-size: 10.00px;">source</a><a href="/tags/utils/" style="font-size: 12.50px;">utils</a><a href="/tags/设计模式/" style="font-size: 17.50px;">设计模式</a>
   </div>
 </div>
 

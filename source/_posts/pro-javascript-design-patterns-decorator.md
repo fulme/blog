@@ -5,7 +5,8 @@ categories: book
 keywords: Javascript,design patterns,设计模式,decorator pattern,装饰者模式
 ---
 
-装饰者模式用来透明地把对象包装在具有同样接口的另一对象之中。
+装饰者模式用来透明地把对象包装在具有同样接口的另一对象之中。  
+下面会用到一个类式继承工具类函数：[extend](/2014/04/11/javascript-inherit/)。
 
 ### 基本结构
 ```js
@@ -35,6 +36,7 @@ SomeDecorator.prototype = {
     return this.obj.method2() + 'some';
   }
 };
+// 见开头部分的介绍
 extend(SomeDecorator, Decorator);
 
 // 具体类（具体装饰者2）
