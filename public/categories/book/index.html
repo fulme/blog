@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="zh-cn">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   
   <title>book | Fulme&#39;s blog</title>
   <meta name="author" content="Fulme">
@@ -237,16 +238,120 @@
     </header>
     <div class="entry">
       
-        <p>代理模式最基本的形式就是实现对另外的对象（本体）进行访问控制，实现与本体相同的接口。<br><strong>注意：</strong>代理对象不添加新的功能，具体的功能都在本体实现。</p>
+        <p>代理模式最基本的形式就是实现对另外的对象（本体）进行访问控制，实现与本体相同的接口，也是是一种优化模式。<br><strong>注意：</strong>代理对象不添加新的功能，具体的功能都在本体实现。  </p>
 <h3 id="-">基本结构</h3>
 <figure class="highlight js"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre>
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+</pre></td><td class="code"><pre><span class="comment">// 实现类</span>
+<span class="keyword">var</span> RealClass = <span class="function"><span class="keyword">function</span> <span class="params">(Obj)</span> {</span>
+  <span class="keyword">this</span>.obj = obj;
+  <span class="keyword">this</span>.properties = [];
 
+  <span class="comment">// 大量（耗时、耗资源）初始化操作</span>
+  <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> obj) {
+    <span class="keyword">if</span> (obj.hasOwnerProperty(i)) {
+      <span class="keyword">this</span>.properties.push(i);
+      <span class="comment">// TODO ...</span>
+    }
+  }
+};
+RealClass.prototype = <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+  method1: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>},
+  method2: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>}
+};
+
+<span class="comment">// 代理类</span>
+<span class="keyword">var</span> ProxyClass = <span class="function"><span class="keyword">function</span> <span class="params">(obj)</span> {</span>
+  <span class="comment">// 缓存构造器所需参数</span>
+  <span class="keyword">this</span>.obj = obj;
+
+  <span class="comment">// 缓存具体类的实例</span>
+  <span class="keyword">this</span>.realObj = <span class="literal">null</span>;
+};
+ProxyClass.prototype = {
+  <span class="comment">// 辅助方法，用于延迟初始化具体的对象</span>
+  <span class="comment">// 仅仅在对象真正被调用的时候才初始化</span>
+  initialize_: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+    <span class="keyword">if</span> (!<span class="keyword">this</span>.realObj) {
+      <span class="keyword">this</span>.realObj = <span class="keyword">new</span> RealClass(<span class="keyword">this</span>.obj);
+    }
+  },
+
+  <span class="comment">// 实现与RealClass相同的接口</span>
+  method1: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    <span class="keyword">this</span>.initialize_();
+    <span class="keyword">this</span>.realObj.method1();
+  },
+  method2: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    <span class="keyword">this</span>.initialize_();
+    <span class="keyword">this</span>.realObj.method1();
+  }
+};
+
+
+<span class="comment">// 调用</span>
+<span class="keyword">var</span> data = {a: <span class="literal">false</span>, b: <span class="number">0</span>, c: <span class="string">'2'</span>};
+<span class="keyword">var</span> obj = <span class="keyword">new</span> ProxyClass(data);
+obj.method1();
+obj.method2();
 </pre></td></tr></table></figure>
 
 <h3 id="-">主要用途</h3>
+<ul>
+<li>控制对创建开销昂贵对象的访问</li>
+</ul>
 <h3 id="-">心得体会</h3>
+<p>代理模式是一种优化模式，同时也增加一个新的辅助类，代码复杂度增加倒是不明显也不难理解。</p>
 
       
     </div>
@@ -1229,23 +1334,6 @@ Factory.prototype = {
 
   
 <div class="widget tag">
-  <h3 class="title">Categories</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/blog/">blog</a><small>5</small></li>
-  
-    <li><a href="/categories/book/">book</a><small>9</small></li>
-  
-    <li><a href="/categories/code/">code</a><small>1</small></li>
-  
-    <li><a href="/categories/diary/">diary</a><small>4</small></li>
-  
-  </ul>
-</div>
-
-
-  
-<div class="widget tag">
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
@@ -1272,6 +1360,23 @@ Factory.prototype = {
 
 
   
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/blog/">blog</a><small>5</small></li>
+  
+    <li><a href="/categories/book/">book</a><small>9</small></li>
+  
+    <li><a href="/categories/code/">code</a><small>1</small></li>
+  
+    <li><a href="/categories/diary/">diary</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
@@ -1287,7 +1392,9 @@ Factory.prototype = {
   <div class="widget tag">
 <h3 class="title">友情链接</h3>
 <ul class="entry">
-<li><a href="http://zipperary.com/" title="Zippera's Blog">Zippera</a></li>
+<li><a href="http://www.75team.com/weekly/" title="领略前端技术 阅读奇舞周刊">奇舞周刊</a></li>
+<li><a href="http://www.75team.com/weekly/" title="领略前端技术 阅读奇舞周刊">奇舞周刊</a></li>
+<li><a href="http://isux.tencent.com/category/fd/" title="FEX 做最专业的前端">FEX 做最专业的前端</a></li>
 </ul>
 </div>
 

@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="zh-cn">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   
   <title>diary | Fulme&#39;s blog</title>
   <meta name="author" content="Fulme">
@@ -400,7 +401,7 @@ someClass.prototype = {
 <span class="function"><span class="keyword">function</span> <span class="title">OhterClass</span> = <span class="title">function</span> <span class="params">(someObj)</span> {</span>
   <span class="comment">// 如果someObj号称实现了Interface1和Interface2两个接口，</span>
   <span class="comment">// 则可以通过下边这一句调用对其进行检测</span>
-  Interface1.ensureImplements(someObj, Interface1, Interface2);
+  Interface.ensureImplements(someObj, Interface1, Interface2);
   
   <span class="keyword">this</span>.someObj = someObj;
   <span class="comment">// TODO something</span>
@@ -411,7 +412,7 @@ OhterClass(<span class="keyword">new</span> SomeClass());
 </pre></td></tr></table></figure>
 
 <h3 id="-">心得体会</h3>
-<p>接口的应用可以是很好地解耦各个模块，有利大项目、多人合作开发。<br>其缺点是实现比较繁琐，也会增加很多的函数调用从而会影响性能，多多少少也有悖Javascript灵活性的特点。<br>在实际的开发中还没有用过，通常在实现一个类或者对象的时候显示地暴露或者在模块文件描述的时候说明一下接口（方法）即可。</p>
+<p>接口的应用可以很好地解耦各个模块，有利于大项目、多人合作开发。<br>其缺点是实现比较繁琐，也会增加很多的函数调用从而会影响性能，多多少少也有悖Javascript灵活性的特点。<br>在实际的开发中还没有用过，通常在实现一个类或者对象的时候显示地暴露+在模块文件描述的时候说明一下接口（方法）即可。</p>
 
       
     </div>
@@ -870,23 +871,6 @@ unix extensions = <span class="literal">no</span>
 
   
 <div class="widget tag">
-  <h3 class="title">Categories</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/blog/">blog</a><small>5</small></li>
-  
-    <li><a href="/categories/book/">book</a><small>9</small></li>
-  
-    <li><a href="/categories/code/">code</a><small>1</small></li>
-  
-    <li><a href="/categories/diary/">diary</a><small>4</small></li>
-  
-  </ul>
-</div>
-
-
-  
-<div class="widget tag">
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
@@ -913,6 +897,23 @@ unix extensions = <span class="literal">no</span>
 
 
   
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/blog/">blog</a><small>5</small></li>
+  
+    <li><a href="/categories/book/">book</a><small>9</small></li>
+  
+    <li><a href="/categories/code/">code</a><small>1</small></li>
+  
+    <li><a href="/categories/diary/">diary</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
@@ -928,7 +929,9 @@ unix extensions = <span class="literal">no</span>
   <div class="widget tag">
 <h3 class="title">友情链接</h3>
 <ul class="entry">
-<li><a href="http://zipperary.com/" title="Zippera's Blog">Zippera</a></li>
+<li><a href="http://www.75team.com/weekly/" title="领略前端技术 阅读奇舞周刊">奇舞周刊</a></li>
+<li><a href="http://www.75team.com/weekly/" title="领略前端技术 阅读奇舞周刊">奇舞周刊</a></li>
+<li><a href="http://isux.tencent.com/category/fd/" title="FEX 做最专业的前端">FEX 做最专业的前端</a></li>
 </ul>
 </div>
 

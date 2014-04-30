@@ -89,7 +89,7 @@ someClass.prototype = {
 function OhterClass = function (someObj) {
   // 如果someObj号称实现了Interface1和Interface2两个接口，
   // 则可以通过下边这一句调用对其进行检测
-  Interface1.ensureImplements(someObj, Interface1, Interface2);
+  Interface.ensureImplements(someObj, Interface1, Interface2);
   
   this.someObj = someObj;
   // TODO something
@@ -99,6 +99,6 @@ function OhterClass = function (someObj) {
 OhterClass(new SomeClass());
 ```
 ### 心得体会
-接口的应用可以是很好地解耦各个模块，有利大项目、多人合作开发。  
+接口的应用可以很好地解耦各个模块，有利于大项目、多人合作开发。  
 其缺点是实现比较繁琐，也会增加很多的函数调用从而会影响性能，多多少少也有悖Javascript灵活性的特点。  
-在实际的开发中还没有用过，通常在实现一个类或者对象的时候显示地暴露或者在模块文件描述的时候说明一下接口（方法）即可。
+在实际的开发中还没有用过，通常在实现一个类或者对象的时候显示地暴露+在模块文件描述的时候说明一下接口（方法）即可。
