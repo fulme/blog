@@ -224,6 +224,71 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-03-24T06:35:38.000Z"><a href="/2014/03/24/pro-javascript-design-patterns-bridge/">2014-03-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/03/24/pro-javascript-design-patterns-bridge/">Javascript设计模式 - 桥接模式</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>桥接模式的作用在于将抽象与其实现分离，以便各自独立变化。</p>
+<h3 id="-">基本结构</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre><span class="comment">// 抽象方法，不随实现的变化而变化</span>
+<span class="function"><span class="keyword">function</span> <span class="title">doSomething</span><span class="params">(data)</span> {</span>
+  <span class="comment">// TODO  something</span>
+}
+
+<span class="comment">// 桥接方法，根据具体实现收集数据</span>
+<span class="function"><span class="keyword">function</span> <span class="title">doSomethingBridge</span><span class="params">(e)</span> {</span>
+  <span class="keyword">var</span> data = e.data || $(<span class="keyword">this</span>).attr(<span class="string">'data'</span>);
+  doSomething(data);
+}
+
+addEvent(element, Event, doSomethingBridge);
+</pre></td></tr></table></figure>
+
+<h3 id="-">主要用途</h3>
+<ul>
+<li>事件监听回调函数</li>
+</ul>
+<p>为了简洁，不再延伸桥接模式的高级形式。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-03-20T08:33:37.000Z"><a href="/2014/03/20/pro-javascript-design-patterns-factory/">2014-03-20</a></time>
       
       
@@ -1047,56 +1112,13 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-02-08T07:31:50.000Z"><a href="/2014/02/08/node.js国内外资料集锦/">2014-02-08</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/02/08/node.js国内外资料集锦/">node.js国内外资料集锦</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <hr>
-<h3 id="-">国内</h3>
-<ul>
-<li>NodeJS专业中文社区:  <a href="http://cnodejs.org" target="_blank"><a href="http://cnodejs.org">http://cnodejs.org</a></a></li>
-<li>官方API文档：<a href="http://cnodejs.org/api/" target="_blank"><a href="http://cnodejs.org/api/">http://cnodejs.org/api/</a></a></li>
-<li>最全中文入门：<a href="http://cnodejs.org/blog/?p=32" target="_blank"><a href="http://cnodejs.org/blog/?p=32">http://cnodejs.org/blog/?p=32</a></a></li>
-<li>NodeJS中文翻译：<a href="http://wiki.grati.org/index.php?title=NodeJS%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3" target="_blank"><a href="http://wiki.grati.org/index.php?title=NodeJS%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3">http://wiki.grati.org/index.php?title=NodeJS%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3</a></a></li>
-<li>又一篇中文入门：<a href="http://news.csdn.net/a/20100312/217428.html" target="_blank"><a href="http://news.csdn.net/a/20100312/217428.html">http://news.csdn.net/a/20100312/217428.html</a></a></li>
-<li>一个靠谱的nodejs学习笔记：<a href="http://blog.csdn.net/zhangxin09/category/726487.aspx?PageNumber=2" target="_blank"><a href="http://blog.csdn.net/zhangxin09/category/726487.aspx?PageNumber=2">http://blog.csdn.net/zhangxin09/category/726487.aspx?PageNumber=2</a></a></li>
-<li>用node写MVC框架：<a href="http://www.cnblogs.com/QLeelulu/archive/2011/01/28/nodejs_into_and_n2mvc.html" target="_blank"><a href="http://www.cnblogs.com/QLeelulu/archive/2011/01/28/nodejs_into_and_n2mvc.html">http://www.cnblogs.com/QLeelulu/archive/2011/01/28/nodejs_into_and_n2mvc.html</a></a>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2014/02/08/node.js国内外资料集锦/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
 
 <nav id="pagination">
   
     <a href="/" class="alignleft prev">Prev</a>
   
+  
+    <a href="/page/3/" class="alignright next">Next</a>
   
   <div class="clearfix"></div>
 </nav></div></div>
@@ -1114,6 +1136,10 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   <ul class="entry">
     
       <li>
+        <a href="/2014/04/30/pro-javascript-design-patterns-observer/">Javascript设计模式 - 观察者模式</a>
+      </li>
+    
+      <li>
         <a href="/2014/04/25/javascript-interface/">Javascript接口</a>
       </li>
     
@@ -1129,10 +1155,6 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
         <a href="/2014/04/17/javascript-copy/">Javascript复制到剪切板</a>
       </li>
     
-      <li>
-        <a href="/2014/04/11/javascript-inherit/">Javascript继承</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -1142,7 +1164,7 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/tags/Javascript/">Javascript</a><small>12</small></li>
+    <li><a href="/tags/Javascript/">Javascript</a><small>13</small></li>
   
     <li><a href="/tags/NodeJS/">NodeJS</a><small>5</small></li>
   
@@ -1158,7 +1180,7 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   
     <li><a href="/tags/utils/">utils</a><small>3</small></li>
   
-    <li><a href="/tags/设计模式/">设计模式</a><small>9</small></li>
+    <li><a href="/tags/设计模式/">设计模式</a><small>10</small></li>
   
   </ul>
 </div>
@@ -1171,7 +1193,7 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   
     <li><a href="/categories/blog/">blog</a><small>5</small></li>
   
-    <li><a href="/categories/book/">book</a><small>9</small></li>
+    <li><a href="/categories/book/">book</a><small>10</small></li>
   
     <li><a href="/categories/code/">code</a><small>1</small></li>
   
@@ -1197,9 +1219,9 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   <div class="widget tag">
 <h3 class="title">友情链接</h3>
 <ul class="entry">
-<li><a href="http://www.75team.com/weekly/" title="领略前端技术 阅读奇舞周刊">奇舞周刊</a></li>
-<li><a href="http://www.75team.com/weekly/" title="领略前端技术 阅读奇舞周刊">奇舞周刊</a></li>
-<li><a href="http://isux.tencent.com/category/fd/" title="FEX 做最专业的前端">FEX 做最专业的前端</a></li>
+<li><a href="http://www.75team.com/weekly/" title="领略前端技术 阅读奇舞周刊" target="_blank">奇舞周刊</a></li>
+<li><a href="http://isux.tencent.com/category/fd" title="领略前端技术 阅读奇舞周刊" target="_blank">腾讯ISUX</a></li>
+<li><a href="http://fex.baidu.com/" title="FEX 做最专业的前端" target="_blank">百度FEX</a></li>
 </ul>
 </div>
 
