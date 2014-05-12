@@ -228,6 +228,127 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-05-07T09:18:49.000Z"><a href="/2014/05/07/javascript-date-object/">2014-05-07</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/05/07/javascript-date-object/">Javascript Date 对象</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><a href="http://www.w3school.com.cn/jsref/jsref_obj_date.asp" target="_blank">Date 对象</a>的详细描述在这里就不照搬了，重点说几个平时可能忽略的点。</p>
+<h3 id="-">获取当前日期</h3>
+<p>获取当前日期有两种方法：<code>Date()</code>和<code>new Date()</code>。</p>
+<ul>
+<li><p>Date作为构造器调用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="comment">// 返回距离GMT+stamp毫秒数对应的时间</span>
+<span class="comment">// 不传参数返回当前时间</span>
+<span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(stamp);
+
+<span class="comment">// 参数可以是多个，类型可以是字符串，但是怎么转换的不清楚，</span>
+<span class="comment">// 起码不是强制转换成Number那么简单，感兴趣的同学可以研究一下</span>
+</pre></td></tr></table></figure>
+</li>
+<li><p>Date作为函数调用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="comment">// args可以是任意参数，都会被忽略</span>
+<span class="keyword">var</span> date = <span class="built_in">Date</span>(args);
+</pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="-">性能测试</h3>
+<p>在chrome上测试发现new Date()的性能明显比Date()高。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="code"><pre><span class="keyword">var</span> testTimes = <span class="number">10000000</span>;
+
+<span class="comment">// new Date()</span>
+console.time(<span class="string">'new Date'</span>);
+<span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;testTimes; i++) {
+  <span class="keyword">new</span> <span class="built_in">Date</span>();
+}
+console.timeEnd(<span class="string">'new Date'</span>);
+
+<span class="comment">// Date()</span>
+console.time(<span class="string">'Date'</span>);
+<span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;testTimes; i++) {
+  <span class="built_in">Date</span>();
+}
+console.timeEnd(<span class="string">'Date'</span>);
+
+<span class="comment">// new Date: 11455.000ms</span>
+<span class="comment">//     Date: 18292.000ms</span>
+</pre></td></tr></table></figure>
+
+<h3 id="-">几种情况</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="keyword">var</span> a = <span class="built_in">Date</span>(<span class="number">0</span>);
+<span class="keyword">var</span> b = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>);
+<span class="keyword">var</span> c = <span class="keyword">new</span> <span class="built_in">Date</span>();
+
+console.log(a != b);<span class="comment">//true</span>
+console.log(b != c);<span class="comment">//true</span>
+console.log(a == c);<span class="comment">//false</span>
+
+console.log(a !== c);<span class="comment">//false!!</span>
+</pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-04-25T02:45:09.000Z"><a href="/2014/04/25/javascript-interface/">2014-04-25</a></time>
       
       
@@ -846,23 +967,23 @@ unix extensions = <span class="literal">no</span>
   <ul class="entry">
     
       <li>
+        <a href="/2014/05/08/pro-javascript-design-patterns-chian-of-responsibility/">Javascript设计模式 - 责任链模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/07/javascript-date-object/">Javascript Date 对象</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/06/pro-javascript-design-patterns-command/">Javascript设计模式 - 命令模式</a>
+      </li>
+    
+      <li>
         <a href="/2014/04/30/pro-javascript-design-patterns-observer/">Javascript设计模式 - 观察者模式</a>
       </li>
     
       <li>
         <a href="/2014/04/25/javascript-interface/">Javascript接口</a>
-      </li>
-    
-      <li>
-        <a href="/2014/04/25/pro-javascript-design-patterns-proxy/">Javascript设计模式 - 代理模式</a>
-      </li>
-    
-      <li>
-        <a href="/2014/04/22/pro-javascript-design-patterns-flyweight/">Javascript设计模式 - 享元模式</a>
-      </li>
-    
-      <li>
-        <a href="/2014/04/17/javascript-copy/">Javascript复制到剪切板</a>
       </li>
     
   </ul>
@@ -874,7 +995,7 @@ unix extensions = <span class="literal">no</span>
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/tags/Javascript/">Javascript</a><small>13</small></li>
+    <li><a href="/tags/Javascript/">Javascript</a><small>16</small></li>
   
     <li><a href="/tags/NodeJS/">NodeJS</a><small>5</small></li>
   
@@ -890,7 +1011,7 @@ unix extensions = <span class="literal">no</span>
   
     <li><a href="/tags/utils/">utils</a><small>3</small></li>
   
-    <li><a href="/tags/设计模式/">设计模式</a><small>10</small></li>
+    <li><a href="/tags/设计模式/">设计模式</a><small>12</small></li>
   
   </ul>
 </div>
@@ -903,11 +1024,11 @@ unix extensions = <span class="literal">no</span>
   
     <li><a href="/categories/blog/">blog</a><small>5</small></li>
   
-    <li><a href="/categories/book/">book</a><small>10</small></li>
+    <li><a href="/categories/book/">book</a><small>12</small></li>
   
     <li><a href="/categories/code/">code</a><small>1</small></li>
   
-    <li><a href="/categories/diary/">diary</a><small>4</small></li>
+    <li><a href="/categories/diary/">diary</a><small>5</small></li>
   
   </ul>
 </div>
@@ -929,9 +1050,13 @@ unix extensions = <span class="literal">no</span>
   <div class="widget tag">
 <h3 class="title">友情链接</h3>
 <ul class="entry">
-<li><a href="http://www.75team.com/weekly/" title="领略前端技术 阅读奇舞周刊" target="_blank">奇舞周刊</a></li>
-<li><a href="http://isux.tencent.com/category/fd" title="领略前端技术 阅读奇舞周刊" target="_blank">腾讯ISUX</a></li>
-<li><a href="http://fex.baidu.com/" title="FEX 做最专业的前端" target="_blank">百度FEX</a></li>
+<li><a href="http://www.75team.com/" title="奇舞团 | 奇虎360旗下前端开发团队" target="_blank">奇舞团</a></li>
+<li><a href="http://fex.baidu.com/" title="百度 Web前端研发部" target="_blank">百度FEX</a></li>
+<li><a href="http://www.baiduux.com/" title="FEX 做最专业的前端" target="_blank">百度UX</a></li>
+<li><a href="http://ued.taobao.com/blog/" title="TaoBaoUED | 做地球上最好的 UED" target="_blank">淘宝UED</a></li>
+<li><a href="http://cdc.tencent.com/" title="腾讯CDC" target="_blank">腾讯CDC</a></li>
+<li><a href="http://ued.sina.com/" title="新浪UED | 一个关注用户体验、关注工作流、关注作品质量的有爱团队" target="_blank">新浪UED</a></li>
+<li><a href="http://www.qwrap.com/" title="QWrap" target="_blank">QWrap博客</a></li>
 </ul>
 </div>
 

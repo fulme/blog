@@ -26,8 +26,8 @@ EventManager.prototype = {
    * on(['evt1', evt2], evtFunc);
    * on({'evt1': evtFuc1, 'evt2': evtFunc2});
    *
-   * @param  {String|Array<String>|Object<String, Function>} args1
-   * @param  {Function|undefined} args2
+   * @param  {String|Array<String>|Object<String, Function>} arg1
+   * @param  {Function|undefined} arg2
    */
   on: function(arg1, arg2) {
     var arg1Type = Object.prototype.toString.call(arg1);

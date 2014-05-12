@@ -228,6 +228,303 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-03-31T09:17:55.000Z"><a href="/2014/03/31/pro-javascript-design-patterns-adapter/">2014-03-31</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/03/31/pro-javascript-design-patterns-adapter/">Javascript设计模式 - 适配器模式</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>适配器模式可用来在现有接口与不兼容的类之间进行适配。</p>
+<h3 id="-">基本结构</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="code"><pre><span class="comment">// 现有接口</span>
+<span class="function"><span class="keyword">function</span> <span class="title">existFunc</span><span class="params">(str1, str2, str3)</span> {</span>}
+
+<span class="comment">// 适配器</span>
+<span class="function"><span class="keyword">function</span> <span class="title">adapterFunc</span><span class="params">(obj)</span> {</span>
+  existFunc(obj.string1, obj.string2, obj.string3);
+}
+
+<span class="comment">// 新的对象</span>
+<span class="keyword">var</span> newObj = {
+  string1: <span class="string">''</span>,
+  string2: <span class="string">''</span>,
+  string3: <span class="string">''</span>,
+  ...
+};
+
+<span class="comment">// 调用</span>
+adapterFunc(newObj);
+</pre></td></tr></table></figure>
+
+<h3 id="-">主要用途</h3>
+<ul>
+<li>使旧的接口和新的类、对象兼容</li>
+</ul>
+<h3 id="-">心得体会</h3>
+<p>这个设计模式是很容易理解的。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-03-31T03:41:50.000Z"><a href="/2014/03/31/pro-javascript-design-patterns-facade/">2014-03-31</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/03/31/pro-javascript-design-patterns-facade/">Javascript设计模式 - 门面模式</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>所谓门面，就是一个功能的快捷入口，就如window系统桌面的一个快捷方式，点击以后会执行快捷方式对应的一个应用程序。
+门面模式就是用来实现门面功能的。</p>
+<h3 id="-">基本结构</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre><span class="comment">// 跨浏览器的事件绑定</span>
+<span class="function"><span class="keyword">function</span> <span class="title">addEvent</span><span class="params">(elem, type, fn)</span> {</span>
+  <span class="keyword">if</span> (window.addEventListener) {
+    elem.addEventListener(type, fn);
+  } <span class="keyword">else</span> <span class="keyword">if</span> (window.attachEvent) {
+    elem.attachEvent(<span class="string">'on'</span> + type, fn);
+  } <span class="keyword">else</span> {
+    elem[<span class="string">'on'</span> + type] = fn;
+  }
+}
+</pre></td></tr></table></figure>
+
+<h3 id="-">主要用途</h3>
+<ul>
+<li>简化类的接口</li>
+<li>消除类与调用者的耦合</li>
+</ul>
+<h3 id="-">心得体会</h3>
+<p>跟前面降到的<a href="/blog/2014/03/20/pro-javascript-design-patterns-factory/">工厂模式</a>有些类似。<br>说说自己的理解吧，工厂模式强调生产出某个类的实例，类的种类可能随时增加。<br>门面模式强调简洁、一致的功能调用入口，就是一个方法，用于实现特定的功能。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-03-24T07:26:55.000Z"><a href="/2014/03/24/pro-javascript-design-patterns-composite/">2014-03-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/03/24/pro-javascript-design-patterns-composite/">Javascript设计模式 - 组合模式</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>组合模式是专门为创建Web上的动态界面量身定制的。将一批具有相同操作的对象组织成一个树形结构，可以用一条命令在多个对象上激发复杂或者递归调用。</p>
+<h3 id="-">基本结构</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+</pre></td><td class="code"><pre><span class="comment">// 组合父类</span>
+<span class="keyword">var</span> CompositeParent = <span class="function"><span class="keyword">function</span><span class="params">(id, method, action)</span> {</span>
+  <span class="comment">// init</span>
+  <span class="keyword">this</span>.children = [];
+};
+
+<span class="comment">// 父类方法</span>
+CompositeParent.prototype = {
+  <span class="comment">// Implement</span>
+
+  add: <span class="function"><span class="keyword">function</span><span class="params">(leaf)</span> {</span>
+    <span class="keyword">this</span>.children.push(leaf);
+  },
+
+  save: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    <span class="comment">// 重点就在这里！！！</span>
+    <span class="keyword">this</span>.children.forEach(<span class="function"><span class="keyword">function</span><span class="params">(child)</span> {</span>
+      child.sava();
+    });
+  };
+};
+
+<span class="comment">// 组合子类</span>
+<span class="keyword">var</span> CompositeLeaf = <span class="function"><span class="keyword">function</span><span class="params">(id)</span> {</span>
+  <span class="comment">// init</span>
+};
+CompositeLeaf.prototype = {
+  save: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>},
+};
+
+<span class="comment">// 具体叶子实现类</span>
+<span class="keyword">var</span> Leaf1 = <span class="function"><span class="keyword">function</span><span class="params">(id)</span> {</span>
+  <span class="comment">// init</span>
+};
+extend(CompositeLeaf, Leaf1); <span class="comment">// 继承CompositeLeaf类</span>
+Leaf1.prototype = {
+  save: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    <span class="comment">// Implement</span>
+  },
+};
+
+<span class="keyword">var</span> Leaf2 = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+  <span class="comment">// init</span>
+};
+...
+
+<span class="comment">// 实现</span>
+<span class="keyword">var</span> parent = <span class="keyword">new</span> CompositeParent(<span class="string">'parent-id'</span>, <span class="string">'POST'</span>, <span class="string">'/action.php'</span>);
+parent.add(<span class="keyword">new</span> Leaf1(<span class="string">'first-name'</span>, <span class="string">'first-name'</span>));
+parent.add(<span class="keyword">new</span> Leaf2(<span class="string">'last-name'</span>, <span class="string">'last-name'</span>));
+
+<span class="comment">// 只需要调用根节点的方法，其余的子节点同名的方法都会被调用</span>
+addEvent(window, <span class="string">'unload'</span>, parent.save);
+</pre></td></tr></table></figure>
+
+<h3 id="-">使用条件</h3>
+<ul>
+<li>存在一批组织成某种层次体系的对象（<strong>具体的结构在开发阶段可能无法得知</strong>）</li>
+<li>希望对这批对象或者其中一部分对象实施一个操作（如：验证数据有效性）</li>
+</ul>
+<h3 id="-">主要用途</h3>
+<ul>
+<li>具有树形结构和相同操作的集合（如：图片库展现，一个目录下可能有目录、图片，这种情况，图片就是叶子对象，目录就是根对象或者子对象）</li>
+<li>子节点个数或者操作实现不确定（如：表单验证，表单的数据项是不容易确定的，且有可能因用户不同而表单区域不一样）</li>
+</ul>
+<h3 id="-">心得体会</h3>
+<p>组合模式是目前为止讲到的最难理解的一种设计模式，一开始会觉得很冗余。但是后来渐渐地发现，这个模式带来的益处还是非常大的。
+首先是在实现部分处理事情很简单、优雅。最重要的是，代码的重用性和可扩展性非常高，设计模式的精髓啊。但是，能用的场合的确很有限。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-03-24T06:35:38.000Z"><a href="/2014/03/24/pro-javascript-design-patterns-bridge/">2014-03-24</a></time>
       
       
@@ -930,192 +1227,6 @@ copssh默认使用22端口，如果需要非本机拉取代码，需要在window
 
 
   
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-02-11T09:03:48.000Z"><a href="/2014/02/11/hexo-guide-1/">2014-02-11</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/02/11/hexo-guide-1/">hexo系列教程（二） - 搭建hexo博客</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="-">环境依赖</h2>
-<p><em>下载安装即可</em> </p>
-<ul>
-<li><a href="http://code.google.com/p/msysgit/" target="_blank">msysgit</a>  </li>
-<li><a href="http://nodejs.org/" target="_blank">NodeJs</a>  </li>
-</ul>
-<h2 id="-hexo">安装hexo</h2>
-<p>  利用 npm 命令即可安装。（在任意位置点击鼠标右键，选择Git bash）  </p>
-<figure class="highlight Javascript"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>npm install -g hexo
-</pre></td></tr></table></figure>
-
-<h2 id="-hexo-">创建hexo文件夹</h2>
-<p>在任意文件夹（如：D:\hexo）点击鼠标右键，选择Git bash</p>
-<figure class="highlight Javascript"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>hexo init
-</pre></td></tr></table></figure>
-
-<h2 id="-">查看效果</h2>
-<p>启用本地服务  </p>
-<figure class="highlight Javascript"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>hexo generate
-hexo server
-</pre></td></tr></table></figure>
-
-<p>现在我们已经搭建起本地的hexo博客了，执行以下命令(在D:\hexo)，然后到浏览器输入localhost:4000看看。<br>好了，至此，本地博客已经搭建起来了。</p>
-<h2 id="-github">部署到Github</h2>
-<ul>
-<li>注册<br>已有账号可以跳过，没有的，请在此进行<a href="https://github.com/signup/free" target="_blank">注册</a>，很简单，这里就不介绍了。</li>
-<li>创建repository<br>在自己<a href="https://github.com/" target="_blank">Github</a>主页右下角，创建一个新的repository。比如我的<a href="https://github.com/" target="_blank">Github</a>账号是<a href="https://github.com/fulme" target="_blank">fulme</a>，那么我应该创建的repository名字应该是<a href="https://fulme.github.io" target="_blank"><em>fulme.github.io</em></a>。</li>
-<li>部署<br>编辑_config.yml(在D:\hexo下)。你在部署时，要把下面的fulme都换成你的账号名。<figure class="highlight YUML"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-</pre></td><td class="code"><pre><span class="label">deploy:</span>
-  type: github
-  repository: https://github<span class="preprocessor">.com</span>/fulme/fulme<span class="preprocessor">.github</span><span class="preprocessor">.io</span><span class="preprocessor">.git</span>
-  branch: master
-</pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>执行下列指令即可完成部署。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>hexo <span class="keyword">generate</span>
-hexo deploy
-</pre></td></tr></table></figure>
-
-<p><strong>记住</strong>：每次修改本地文件后，需要hexo generate才能保存。每次使用命令时，都要在D:\hexo目录下。
-Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.github.io就能看到你的成就了！</p>
-<h2 id="-">注意</h2>
-<ul>
-<li>有网友反应右键菜单中没有git bash选项，可以进入开始菜单找到git bash，然后通过cd进入相应目录执行命令。</li>
-<li>在github部署完成之后，马上访问可能出现404错误，这是正常的，（最多）等待十分钟左右就可以访问了。</li>
-<li>如果在hexo d之后出现fatal: &#39;username.github.io&#39; does not appear to be a git repository，一是检查 repo 的名字是否合乎规范、是否含有大写字母、config.yml 中的 deploy 配置是否正确，二是把 git bash 关掉，重新打开再执行命令</li>
-</ul>
-<h2 id="tips">TIPS</h2>
-<p>hexo现在支持更加简单的命令格式了，比如：</p>
-<ul>
-<li>hexo g == hexo generate  </li>
-<li>hexo d == hexo deploy  </li>
-<li>hexo s == hexo server  </li>
-<li>hexo n == hexo new  </li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-02-11T08:10:30.000Z"><a href="/2014/02/11/hexo-guide-0/">2014-02-11</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/02/11/hexo-guide-0/">hexo系列教程（一） - hexo简介</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p><em>声明：此系列教程仅仅是在学习的时候根据其它教程（如：<a href="http://zipperary.com/categories/hexo/" target="_blank">Zippera&#39;s blog</a>）整理，主要是供自己学习及收藏之用，能对您有所帮助，纯属巧合，不喜欢请轻拍，谢谢！</em></p>
-<h2 id="hexo-">hexo是什么</h2>
-<p><a href="http://zespia.tw/hexo/zh-CN/" target="_blank">hexo</a>是基于Node.js的静态博客框架，可以很方便地生成静态博客并托管到<a href="https://github.com/" target="_blank">github</a>或者<a href="https://www.heroku.com/" target="_blank">heroku</a>上。引用作者<a href="https://github.com/tommy351/hexo" target="_blank">tommy351</a>的话：</p>
-<hr>
-<p><em><center>快速、简单且功能强大的 Node.js 博客框架。</em></p>
-<p><em>A fast, simple &amp; powerful blog framework, powered by Node.js.</center></em></p>
-<hr>
-<p>类似于jekyll、Octopress、Wordpress，我们可以用hexo创建自己的博客，托管到github或Heroku上，绑定自己的域名，用markdown写文章。本博客即使用hexo创建并托管在github上。</p>
-<h2 id="-hexo">为什么选择hexo</h2>
-<p>还是引用下作者的话：</p>
-<hr>
-<p><em><center>不可思议的快速 ─ 只要一眨眼静态文件即生成完成
-支持 Markdown<br>仅需一道指令即可部署到 GitHub Pages 和 Heroku<br>已移植 Octopress 插件<br>高扩展性、自订性<br>兼容于 Windows, Mac &amp; Linux</center></em></p>
-<hr>
-<h2 id="-hexo">谁能使用hexo</h2>
-<p>这是一个免费开源的博客程序，任何人都可以使用和修改。但是不同于wordpress，hexo由于需要使用Github,Git,Markdown,Node.js这样的工具，好多插件、widget都需要自己安装、设置。所以适合那些有一定计算机基础，喜欢折腾的人。但是，不要恐惧，只要跟着本教程走，就能很方便地让自己的博客“飞起来”。</p>
-<h2 id="-">注意</h2>
-<p>本系列相关博客均根据hexo2.4.5版本，但更高版本也几乎完全适用。各版本所做更新修正，请参考<a href="https://github.com/tommy351/hexo/releases" target="_blank">这里</a>。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-02-08T08:46:10.000Z"><a href="/2014/02/08/nodejs新特性cluster的使用/">2014-02-08</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/02/08/nodejs新特性cluster的使用/">nodejs新特性cluster的使用</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <hr>
-<p>Q：cluster是什么？cluster应该怎么用？cluster是多进程吗？<br>A：<a href="http://yoyo.play175.com/tag/nodejs/" target="_blank">nodejs</a>增加了一个模块cluster用于实现node的多进程，其实这是对子进程（child_process）操作的一个封装，让我们更简单的使用多进程来增加程序在多核CPU机器上的性能表现。
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2014/02/08/nodejs新特性cluster的使用/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
 
   <nav id="pagination">
   
@@ -1141,23 +1252,23 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   <ul class="entry">
     
       <li>
+        <a href="/2014/05/08/pro-javascript-design-patterns-chian-of-responsibility/">Javascript设计模式 - 责任链模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/07/javascript-date-object/">Javascript Date 对象</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/06/pro-javascript-design-patterns-command/">Javascript设计模式 - 命令模式</a>
+      </li>
+    
+      <li>
         <a href="/2014/04/30/pro-javascript-design-patterns-observer/">Javascript设计模式 - 观察者模式</a>
       </li>
     
       <li>
         <a href="/2014/04/25/javascript-interface/">Javascript接口</a>
-      </li>
-    
-      <li>
-        <a href="/2014/04/25/pro-javascript-design-patterns-proxy/">Javascript设计模式 - 代理模式</a>
-      </li>
-    
-      <li>
-        <a href="/2014/04/22/pro-javascript-design-patterns-flyweight/">Javascript设计模式 - 享元模式</a>
-      </li>
-    
-      <li>
-        <a href="/2014/04/17/javascript-copy/">Javascript复制到剪切板</a>
       </li>
     
   </ul>
@@ -1169,7 +1280,7 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/tags/Javascript/">Javascript</a><small>13</small></li>
+    <li><a href="/tags/Javascript/">Javascript</a><small>16</small></li>
   
     <li><a href="/tags/NodeJS/">NodeJS</a><small>5</small></li>
   
@@ -1185,7 +1296,7 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   
     <li><a href="/tags/utils/">utils</a><small>3</small></li>
   
-    <li><a href="/tags/设计模式/">设计模式</a><small>10</small></li>
+    <li><a href="/tags/设计模式/">设计模式</a><small>12</small></li>
   
   </ul>
 </div>
@@ -1198,11 +1309,11 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   
     <li><a href="/categories/blog/">blog</a><small>5</small></li>
   
-    <li><a href="/categories/book/">book</a><small>10</small></li>
+    <li><a href="/categories/book/">book</a><small>12</small></li>
   
     <li><a href="/categories/code/">code</a><small>1</small></li>
   
-    <li><a href="/categories/diary/">diary</a><small>4</small></li>
+    <li><a href="/categories/diary/">diary</a><small>5</small></li>
   
   </ul>
 </div>
@@ -1224,9 +1335,13 @@ Okay，我们的博客已经完全搭建起来了，在浏览器访问fulme.gith
   <div class="widget tag">
 <h3 class="title">友情链接</h3>
 <ul class="entry">
-<li><a href="http://www.75team.com/weekly/" title="领略前端技术 阅读奇舞周刊" target="_blank">奇舞周刊</a></li>
-<li><a href="http://isux.tencent.com/category/fd" title="领略前端技术 阅读奇舞周刊" target="_blank">腾讯ISUX</a></li>
-<li><a href="http://fex.baidu.com/" title="FEX 做最专业的前端" target="_blank">百度FEX</a></li>
+<li><a href="http://www.75team.com/" title="奇舞团 | 奇虎360旗下前端开发团队" target="_blank">奇舞团</a></li>
+<li><a href="http://fex.baidu.com/" title="百度 Web前端研发部" target="_blank">百度FEX</a></li>
+<li><a href="http://www.baiduux.com/" title="FEX 做最专业的前端" target="_blank">百度UX</a></li>
+<li><a href="http://ued.taobao.com/blog/" title="TaoBaoUED | 做地球上最好的 UED" target="_blank">淘宝UED</a></li>
+<li><a href="http://cdc.tencent.com/" title="腾讯CDC" target="_blank">腾讯CDC</a></li>
+<li><a href="http://ued.sina.com/" title="新浪UED | 一个关注用户体验、关注工作流、关注作品质量的有爱团队" target="_blank">新浪UED</a></li>
+<li><a href="http://www.qwrap.com/" title="QWrap" target="_blank">QWrap博客</a></li>
 </ul>
 </div>
 

@@ -1,0 +1,510 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  
+  <title>Page 2 | 设计模式 | Fulme&#39;s blog</title>
+  <meta name="author" content="Fulme">
+  
+  <meta name="description" content="Thinking makes you stronger, ideal makes you invincible.">
+  
+  <meta name="author" content="Fulme">
+
+  
+  <meta name="keywords" content="Javascript, NodeJS, fulme, blog, 博客, 设计模式">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Fulme&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Fulme&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33912996-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Fulme&#39;s blog</a></h1>
+  <h2><a href="/">Thinking makes you stronger, ideal makes you invincible.</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+      <li><a href="/todo">Todo</a></li>
+    
+    
+    <li> <a title="harlem shake" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<h2 class="archive-title tag">设计模式</h2>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-03-20T08:33:37.000Z"><a href="/2014/03/20/pro-javascript-design-patterns-factory/">2014-03-20</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/03/20/pro-javascript-design-patterns-factory/">Javascript设计模式 - 工厂模式</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>工厂模式是一种有助于消除两个类之间依赖性的模式，它使用一个方法来决定究竟实例化哪一个具体类。</p>
+<h3 id="-">基本结构</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="code"><pre><span class="keyword">var</span> Factory = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>};
+Factory.prototype = {
+  method1: <span class="function"><span class="keyword">function</span><span class="params">(model)</span> {</span>
+    <span class="keyword">var</span> obj;
+
+    <span class="keyword">switch</span> (model) {
+      <span class="keyword">case</span> <span class="string">'model1'</span>:
+      obj = <span class="keyword">new</span> Class1();
+      <span class="keyword">break</span>;
+      <span class="keyword">case</span> <span class="string">'model2'</span>:
+      obj = <span class="keyword">new</span> Class2();
+      <span class="keyword">break</span>;
+    }
+
+    <span class="keyword">return</span> obj;
+  },
+
+  method2: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>}
+};
+</pre></td></tr></table></figure>
+
+<h3 id="-">主要用途</h3>
+<ul>
+<li>所实例化的类的类型不能在开发期间确定，就是随时可能有新的类加入的情况</li>
+<li>因环境不同可能有不同实例的情况（如：跨浏览器的Ajax）。</li>
+</ul>
+<p>同样为了简洁，不再延伸此模式的高级形式。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-03-20T06:04:59.000Z"><a href="/2014/03/20/pro-javascript-design-patterns-singleton/">2014-03-20</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/03/20/pro-javascript-design-patterns-singleton/">Javascript设计模式 - 单体模式</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><a href="http://www.apress.com/9781590599082" target="_blank">Javascript设计模式</a>这本书值得一看。
+本系列文章都是这本书的学习笔记。书写的再好，还是会有一些上下文情景或者是一些相关说明与介绍。
+虽然此书的每一个部分都很精彩，内容也很精简，但是为了方便自己理解，还是决定做一个笔记以加深映象。</p>
+<p>单体模式主要用于划分命名空间或者说模块划分，将一批有一定关联的属性和方法组织在一起。  </p>
+<h3 id="-">基本结构如下</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="keyword">var</span> sigleton = {
+  <span class="comment">// 属性</span>
+  attr1: <span class="literal">true</span>,
+  attr2: <span class="number">10</span>,
+
+  <span class="comment">// 方法</span>
+  method1: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>},
+  method2: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>},
+};
+</pre></td></tr></table></figure>
+
+<h3 id="-">主要用途</h3>
+<ul>
+<li>将一个比较大功能细分成几个小的模块，每个模块独占一个文件和一个全局名称</li>
+<li>将一些功能性的函数（不太会调用其他模块函数）组织在一个文件（模块）中，方便各处调用。</li>
+</ul>
+<p>当然此模式还有一些高级形式，为了简洁暂不介绍。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+
+  <nav id="pagination">
+  
+    <a href="/tags/设计模式/" class="alignleft prev">Prev</a>
+  
+  
+  <div class="clearfix"></div>
+</nav>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:www.suluf.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/05/08/pro-javascript-design-patterns-chian-of-responsibility/">Javascript设计模式 - 责任链模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/07/javascript-date-object/">Javascript Date 对象</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/06/pro-javascript-design-patterns-command/">Javascript设计模式 - 命令模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/30/pro-javascript-design-patterns-observer/">Javascript设计模式 - 观察者模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/25/javascript-interface/">Javascript接口</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Javascript/">Javascript</a><small>16</small></li>
+  
+    <li><a href="/tags/NodeJS/">NodeJS</a><small>5</small></li>
+  
+    <li><a href="/tags/copssh/">copssh</a><small>1</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>1</small></li>
+  
+    <li><a href="/tags/hexo/">hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/samba/">samba</a><small>1</small></li>
+  
+    <li><a href="/tags/source/">source</a><small>1</small></li>
+  
+    <li><a href="/tags/utils/">utils</a><small>3</small></li>
+  
+    <li><a href="/tags/设计模式/">设计模式</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/blog/">blog</a><small>5</small></li>
+  
+    <li><a href="/categories/book/">book</a><small>12</small></li>
+  
+    <li><a href="/categories/code/">code</a><small>1</small></li>
+  
+    <li><a href="/categories/diary/">diary</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Javascript/" style="font-size: 20.00px;">Javascript</a><a href="/tags/NodeJS/" style="font-size: 15.00px;">NodeJS</a><a href="/tags/copssh/" style="font-size: 10.00px;">copssh</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/hexo/" style="font-size: 12.50px;">hexo</a><a href="/tags/samba/" style="font-size: 10.00px;">samba</a><a href="/tags/source/" style="font-size: 10.00px;">source</a><a href="/tags/utils/" style="font-size: 12.50px;">utils</a><a href="/tags/设计模式/" style="font-size: 17.50px;">设计模式</a>
+  </div>
+</div>
+
+
+  
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=1848812323&verifier=294c9662&dpc=1"></iframe>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://www.75team.com/" title="奇舞团 | 奇虎360旗下前端开发团队" target="_blank">奇舞团</a></li>
+<li><a href="http://fex.baidu.com/" title="百度 Web前端研发部" target="_blank">百度FEX</a></li>
+<li><a href="http://www.baiduux.com/" title="FEX 做最专业的前端" target="_blank">百度UX</a></li>
+<li><a href="http://ued.taobao.com/blog/" title="TaoBaoUED | 做地球上最好的 UED" target="_blank">淘宝UED</a></li>
+<li><a href="http://cdc.tencent.com/" title="腾讯CDC" target="_blank">腾讯CDC</a></li>
+<li><a href="http://ued.sina.com/" title="新浪UED | 一个关注用户体验、关注工作流、关注作品质量的有爱团队" target="_blank">新浪UED</a></li>
+<li><a href="http://www.qwrap.com/" title="QWrap" target="_blank">QWrap博客</a></li>
+</ul>
+</div>
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Fulme
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

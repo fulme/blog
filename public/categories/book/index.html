@@ -228,6 +228,240 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-05-08T13:20:39.000Z"><a href="/2014/05/08/pro-javascript-design-patterns-chian-of-responsibility/">2014-05-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/05/08/pro-javascript-design-patterns-chian-of-responsibility/">Javascript设计模式 - 责任链模式</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>责任链模式也是一种优化方法，典型的应用场景是配<a href="/2014/03/24/pro-javascript-design-patterns-composite/">合组合模式</a>使用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+</pre></td><td class="code"><pre><span class="comment">// 组合父类</span>
+<span class="keyword">var</span> CompositeParent = <span class="function"><span class="keyword">function</span><span class="params">(id, method, action)</span> {</span>
+  <span class="keyword">this</span>.element = document.createElement(<span class="string">'ul'</span>);
+  <span class="keyword">this</span>.children = [];
+};
+
+<span class="comment">// 父类方法</span>
+CompositeParent.prototype = {
+  hide: <span class="function"><span class="keyword">function</span><span class="params">(leaf)</span> {</span>
+    <span class="keyword">this</span>.element.style.display = <span class="string">'none'</span>;
+    <span class="comment">// 按照组合模式的原理，</span>
+    <span class="comment">// 此处应该遍历子元素并逐个调用其hide方法</span>
+    <span class="comment">// 但是元素的css隐藏元素时会自动隐藏起子元素</span>
+    <span class="comment">// 所以完全没有必要调用</span>
+  }
+};
+
+<span class="comment">// 组合子类</span>
+<span class="keyword">var</span> CompositeLeaf = <span class="function"><span class="keyword">function</span><span class="params">(id)</span> {</span>
+  <span class="keyword">this</span>.element = document.createElement(<span class="string">'li'</span>);
+};
+CompositeLeaf.prototype = {
+  hide: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    <span class="keyword">this</span>.element.style.display = <span class="string">'none'</span>;
+  }
+};
+
+<span class="comment">// 具体叶子实现类</span>
+<span class="keyword">var</span> Leaf1 = <span class="function"><span class="keyword">function</span><span class="params">(id)</span> {</span>
+  <span class="comment">// init</span>
+};
+extend(CompositeLeaf, Leaf1); <span class="comment">// 继承CompositeLeaf类</span>
+Leaf1.prototype = {
+  hide: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    <span class="comment">// Implement</span>
+  },
+};
+
+<span class="keyword">var</span> Leaf2 = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+  <span class="comment">// init</span>
+};
+
+<span class="comment">// 实现部分就没什么特别饿了</span>
+<span class="keyword">var</span> parent = <span class="keyword">new</span> CompositeParent(<span class="string">'parent-id'</span>, <span class="string">'POST'</span>, <span class="string">'/action.php'</span>);
+parent.add(<span class="keyword">new</span> Leaf1(<span class="string">'first-name'</span>, <span class="string">'first-name'</span>));
+parent.add(<span class="keyword">new</span> Leaf2(<span class="string">'last-name'</span>, <span class="string">'last-name'</span>));
+
+<span class="comment">// 只需要调用根节点的方法，其余的子节点同名的方法都会被调用</span>
+addEvent(window, <span class="string">'unload'</span>, parent.save);
+</pre></td></tr></table></figure>
+
+<h3 id="-">主要用途</h3>
+<ul>
+<li>优化性能，阻断一些不必要的处理</li>
+<li>动态分配任务，用于在运行时将任务分派给最恰当的处理对象</li>
+</ul>
+<h3 id="-">心得体会</h3>
+<p>这个模式用的很多，只是不会感觉到是在用一种模式而已。
+典型的应用有事件冒泡处理。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-05-06T12:05:49.000Z"><a href="/2014/05/06/pro-javascript-design-patterns-command/">2014-05-06</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/05/06/pro-javascript-design-patterns-command/">Javascript设计模式 - 命令模式</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="-">基本结构</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="code"><pre><span class="keyword">var</span> Class = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>};
+Class.prototype = {
+  method1: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>},
+  method2: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>}
+};
+
+<span class="function"><span class="keyword">function</span> <span class="title">makeCommand1</span><span class="params">(obj)</span> {</span>
+  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    obj.method1();
+  };
+}
+
+<span class="function"><span class="keyword">function</span> <span class="title">makeCommand2</span><span class="params">(ojb)</span> {</span>
+  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    obj.method2();
+  };
+}
+
+<span class="keyword">var</span> obj = <span class="keyword">new</span> Class();
+<span class="keyword">var</span> cmd1 = makeCommand1(obj);
+<span class="keyword">var</span> cmd2 = makeCommand2(obj);
+
+<span class="comment">// 注意：下面这行注释是重点！！！</span>
+<span class="comment">// 可以将cmd1、cmd2传送到任何地方、任何时候执行</span>
+cmd1();
+cmd2();
+</pre></td></tr></table></figure>
+
+<h3 id="-">主要用途</h3>
+<ul>
+<li>UI与实现分离，可以完全独立变化</li>
+</ul>
+<h3 id="-">心得体会</h3>
+<p>为了简洁，上面提到的结构是最简单的形式。<br>从上面的基本结构来看，就是做一些封装的活，感觉也没太大的意义，但是后面的那句注释是重点。<br>真是的项目中还是能用的上的，这样做可以极大地提高组件的复用，否则与用户打交道的UI及其相关的逻辑很难实现复用。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-04-30T07:51:19.000Z"><a href="/2014/04/30/pro-javascript-design-patterns-observer/">2014-04-30</a></time>
       
       
@@ -331,8 +565,8 @@ EventManager.prototype = {
    * on(['evt1', evt2], evtFunc);
    * on({'evt1': evtFuc1, 'evt2': evtFunc2});
    *
-   * @param  {String|Array&lt;String&gt;|Object&lt;String, Function&gt;} args1
-   * @param  {Function|undefined} args2
+   * @param  {String|Array&lt;String&gt;|Object&lt;String, Function&gt;} arg1
+   * @param  {Function|undefined} arg2
    */</span>
   on: <span class="function"><span class="keyword">function</span><span class="params">(arg1, arg2)</span> {</span>
     <span class="keyword">var</span> arg1Type = <span class="built_in">Object</span>.prototype.toString.call(arg1);
@@ -1337,152 +1571,11 @@ addEvent(element, Event, doSomethingBridge);
 
 
   
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-03-20T08:33:37.000Z"><a href="/2014/03/20/pro-javascript-design-patterns-factory/">2014-03-20</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/03/20/pro-javascript-design-patterns-factory/">Javascript设计模式 - 工厂模式</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>工厂模式是一种有助于消除两个类之间依赖性的模式，它使用一个方法来决定究竟实例化哪一个具体类。</p>
-<h3 id="-">基本结构</h3>
-<figure class="highlight js"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-</pre></td><td class="code"><pre><span class="keyword">var</span> Factory = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>};
-Factory.prototype = {
-  method1: <span class="function"><span class="keyword">function</span><span class="params">(model)</span> {</span>
-    <span class="keyword">var</span> obj;
-
-    <span class="keyword">switch</span> (model) {
-      <span class="keyword">case</span> <span class="string">'model1'</span>:
-      obj = <span class="keyword">new</span> Class1();
-      <span class="keyword">break</span>;
-      <span class="keyword">case</span> <span class="string">'model2'</span>:
-      obj = <span class="keyword">new</span> Class2();
-      <span class="keyword">break</span>;
-    }
-
-    <span class="keyword">return</span> obj;
-  },
-
-  method2: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>}
-};
-</pre></td></tr></table></figure>
-
-<h3 id="-">主要用途</h3>
-<ul>
-<li>所实例化的类的类型不能在开发期间确定，就是随时可能有新的类加入的情况</li>
-<li>因环境不同可能有不同实例的情况（如：跨浏览器的Ajax）。</li>
-</ul>
-<p>同样为了简洁，不再延伸此模式的高级形式。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-03-20T06:04:59.000Z"><a href="/2014/03/20/pro-javascript-design-patterns-singleton/">2014-03-20</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/03/20/pro-javascript-design-patterns-singleton/">Javascript设计模式 - 单体模式</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p><a href="http://www.apress.com/9781590599082" target="_blank">Javascript设计模式</a>这本书值得一看。
-本系列文章都是这本书的学习笔记。书写的再好，还是会有一些上下文情景或者是一些相关说明与介绍。
-虽然此书的每一个部分都很精彩，内容也很精简，但是为了方便自己理解，还是决定做一个笔记以加深映象。</p>
-<p>单体模式主要用于划分命名空间或者说模块划分，将一批有一定关联的属性和方法组织在一起。  </p>
-<h3 id="-">基本结构如下</h3>
-<figure class="highlight js"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-</pre></td><td class="code"><pre><span class="keyword">var</span> sigleton = {
-  <span class="comment">// 属性</span>
-  attr1: <span class="literal">true</span>,
-  attr2: <span class="number">10</span>,
-
-  <span class="comment">// 方法</span>
-  method1: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>},
-  method2: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>},
-};
-</pre></td></tr></table></figure>
-
-<h3 id="-">主要用途</h3>
-<ul>
-<li>将一个比较大功能细分成几个小的模块，每个模块独占一个文件和一个全局名称</li>
-<li>将一些功能性的函数（不太会调用其他模块函数）组织在一个文件（模块）中，方便各处调用。</li>
-</ul>
-<p>当然此模式还有一些高级形式，为了简洁暂不介绍。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
 
   <nav id="pagination">
   
+  
+    <a href="/categories/book/page/2/" class="alignright next">Next</a>
   
   <div class="clearfix"></div>
 </nav>
@@ -1501,23 +1594,23 @@ Factory.prototype = {
   <ul class="entry">
     
       <li>
+        <a href="/2014/05/08/pro-javascript-design-patterns-chian-of-responsibility/">Javascript设计模式 - 责任链模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/07/javascript-date-object/">Javascript Date 对象</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/06/pro-javascript-design-patterns-command/">Javascript设计模式 - 命令模式</a>
+      </li>
+    
+      <li>
         <a href="/2014/04/30/pro-javascript-design-patterns-observer/">Javascript设计模式 - 观察者模式</a>
       </li>
     
       <li>
         <a href="/2014/04/25/javascript-interface/">Javascript接口</a>
-      </li>
-    
-      <li>
-        <a href="/2014/04/25/pro-javascript-design-patterns-proxy/">Javascript设计模式 - 代理模式</a>
-      </li>
-    
-      <li>
-        <a href="/2014/04/22/pro-javascript-design-patterns-flyweight/">Javascript设计模式 - 享元模式</a>
-      </li>
-    
-      <li>
-        <a href="/2014/04/17/javascript-copy/">Javascript复制到剪切板</a>
       </li>
     
   </ul>
@@ -1529,7 +1622,7 @@ Factory.prototype = {
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/tags/Javascript/">Javascript</a><small>13</small></li>
+    <li><a href="/tags/Javascript/">Javascript</a><small>16</small></li>
   
     <li><a href="/tags/NodeJS/">NodeJS</a><small>5</small></li>
   
@@ -1545,7 +1638,7 @@ Factory.prototype = {
   
     <li><a href="/tags/utils/">utils</a><small>3</small></li>
   
-    <li><a href="/tags/设计模式/">设计模式</a><small>10</small></li>
+    <li><a href="/tags/设计模式/">设计模式</a><small>12</small></li>
   
   </ul>
 </div>
@@ -1558,11 +1651,11 @@ Factory.prototype = {
   
     <li><a href="/categories/blog/">blog</a><small>5</small></li>
   
-    <li><a href="/categories/book/">book</a><small>10</small></li>
+    <li><a href="/categories/book/">book</a><small>12</small></li>
   
     <li><a href="/categories/code/">code</a><small>1</small></li>
   
-    <li><a href="/categories/diary/">diary</a><small>4</small></li>
+    <li><a href="/categories/diary/">diary</a><small>5</small></li>
   
   </ul>
 </div>
@@ -1584,9 +1677,13 @@ Factory.prototype = {
   <div class="widget tag">
 <h3 class="title">友情链接</h3>
 <ul class="entry">
-<li><a href="http://www.75team.com/weekly/" title="领略前端技术 阅读奇舞周刊" target="_blank">奇舞周刊</a></li>
-<li><a href="http://isux.tencent.com/category/fd" title="领略前端技术 阅读奇舞周刊" target="_blank">腾讯ISUX</a></li>
-<li><a href="http://fex.baidu.com/" title="FEX 做最专业的前端" target="_blank">百度FEX</a></li>
+<li><a href="http://www.75team.com/" title="奇舞团 | 奇虎360旗下前端开发团队" target="_blank">奇舞团</a></li>
+<li><a href="http://fex.baidu.com/" title="百度 Web前端研发部" target="_blank">百度FEX</a></li>
+<li><a href="http://www.baiduux.com/" title="FEX 做最专业的前端" target="_blank">百度UX</a></li>
+<li><a href="http://ued.taobao.com/blog/" title="TaoBaoUED | 做地球上最好的 UED" target="_blank">淘宝UED</a></li>
+<li><a href="http://cdc.tencent.com/" title="腾讯CDC" target="_blank">腾讯CDC</a></li>
+<li><a href="http://ued.sina.com/" title="新浪UED | 一个关注用户体验、关注工作流、关注作品质量的有爱团队" target="_blank">新浪UED</a></li>
+<li><a href="http://www.qwrap.com/" title="QWrap" target="_blank">QWrap博客</a></li>
 </ul>
 </div>
 
