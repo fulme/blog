@@ -626,7 +626,7 @@ Person.prototype = {
 
 
 <span class="function"><span class="keyword">function</span> <span class="title">Author</span><span class="params">(name, blog)</span> {</span>
-  Author.superClass.call(<span class="keyword">this</span>, name);
+  Author.superClass.constructor.call(<span class="keyword">this</span>, name);
   <span class="keyword">this</span>.blog = blog;
 }
 extend(Author, Person);
@@ -635,10 +635,10 @@ Author.prototype.getBlog = <span class="function"><span class="keyword">function
 };
 
 <span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">'default name'</span>);
-<span class="keyword">var</span> author = <span class="keyword">new</span> Author(<span class="string">'fulme'</span>, <span class="string">'www.suluf.com/blog/'</span>);
+<span class="keyword">var</span> author = <span class="keyword">new</span> Author(<span class="string">'fulme'</span>, <span class="string">'http://www.blog.suluf.com/'</span>);
 alert(person.getName()); <span class="comment">// 'default name'</span>
 alert(author.getName()); <span class="comment">// 'fulme'</span>
-alert(author.getBlog()); <span class="comment">// 'www.suluf.com/blog/'</span>
+alert(author.getBlog()); <span class="comment">// 'http://www.blog.suluf.com/'</span>
 </pre></td></tr></table></figure>
 
 <h3 id="-">原型链继承</h3>
@@ -668,7 +668,7 @@ alert(author.getBlog()); <span class="comment">// 'www.suluf.com/blog/'</span>
 24
 </pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">clone</span><span class="params">(obj)</span> {</span>
   <span class="function"><span class="keyword">function</span> <span class="title">F</span><span class="params">()</span> {</span>}
-  F.prototyp = obj;
+  F.prototype = obj;
   <span class="keyword">return</span> <span class="keyword">new</span> F();
 }
 
@@ -684,12 +684,12 @@ alert(author.getBlog()); <span class="comment">// 'www.suluf.com/blog/'</span>
 alert(author.getName()); <span class="comment">// 'default name'</span>
 
 author.name = <span class="string">'fulme'</span>;
-author.blog = <span class="string">'www.suluf.com/blog/'</span>;
+author.blog = <span class="string">'http://www.blog.suluf.com/'</span>;
 author.getBlog = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
   <span class="keyword">return</span> <span class="keyword">this</span>.blog;
 };
 alert(author.getName()); <span class="comment">// 'fulme'</span>
-alert(author.getBlog()); <span class="comment">// 'www.suluf.com/blog/'</span>
+alert(author.getBlog()); <span class="comment">// 'http://www.blog.suluf.com/'</span>
 </pre></td></tr></table></figure>
 
 <h3 id="-">心得体会</h3>
@@ -731,6 +731,10 @@ alert(author.getBlog()); <span class="comment">// 'www.suluf.com/blog/'</span>
   <ul class="entry">
     
       <li>
+        <a href="/2014/05/12/nodejs+mongodb-服务端实现/">NodeJS+Mongodb 服务端实现</a>
+      </li>
+    
+      <li>
         <a href="/2014/05/08/pro-javascript-design-patterns-chian-of-responsibility/">Javascript设计模式 - 责任链模式</a>
       </li>
     
@@ -746,10 +750,6 @@ alert(author.getBlog()); <span class="comment">// 'www.suluf.com/blog/'</span>
         <a href="/2014/04/30/pro-javascript-design-patterns-observer/">Javascript设计模式 - 观察者模式</a>
       </li>
     
-      <li>
-        <a href="/2014/04/25/javascript-interface/">Javascript接口</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -761,7 +761,9 @@ alert(author.getBlog()); <span class="comment">// 'www.suluf.com/blog/'</span>
   
     <li><a href="/tags/Javascript/">Javascript</a><small>16</small></li>
   
-    <li><a href="/tags/NodeJS/">NodeJS</a><small>5</small></li>
+    <li><a href="/tags/Mongodb/">Mongodb</a><small>1</small></li>
+  
+    <li><a href="/tags/NodeJS/">NodeJS</a><small>6</small></li>
   
     <li><a href="/tags/copssh/">copssh</a><small>1</small></li>
   
@@ -786,7 +788,7 @@ alert(author.getBlog()); <span class="comment">// 'www.suluf.com/blog/'</span>
   <h3 class="title">Categories</h3>
   <ul class="entry">
   
-    <li><a href="/categories/blog/">blog</a><small>5</small></li>
+    <li><a href="/categories/blog/">blog</a><small>6</small></li>
   
     <li><a href="/categories/book/">book</a><small>12</small></li>
   
@@ -802,7 +804,7 @@ alert(author.getBlog()); <span class="comment">// 'www.suluf.com/blog/'</span>
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/Javascript/" style="font-size: 20.00px;">Javascript</a><a href="/tags/NodeJS/" style="font-size: 15.00px;">NodeJS</a><a href="/tags/copssh/" style="font-size: 10.00px;">copssh</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/hexo/" style="font-size: 12.50px;">hexo</a><a href="/tags/samba/" style="font-size: 10.00px;">samba</a><a href="/tags/source/" style="font-size: 10.00px;">source</a><a href="/tags/utils/" style="font-size: 12.50px;">utils</a><a href="/tags/设计模式/" style="font-size: 17.50px;">设计模式</a>
+    <a href="/tags/Javascript/" style="font-size: 20.00px;">Javascript</a><a href="/tags/Mongodb/" style="font-size: 10.00px;">Mongodb</a><a href="/tags/NodeJS/" style="font-size: 15.00px;">NodeJS</a><a href="/tags/copssh/" style="font-size: 10.00px;">copssh</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/hexo/" style="font-size: 12.50px;">hexo</a><a href="/tags/samba/" style="font-size: 10.00px;">samba</a><a href="/tags/source/" style="font-size: 10.00px;">source</a><a href="/tags/utils/" style="font-size: 12.50px;">utils</a><a href="/tags/设计模式/" style="font-size: 17.50px;">设计模式</a>
   </div>
 </div>
 

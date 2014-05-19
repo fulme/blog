@@ -45,7 +45,7 @@ Person.prototype = {
 
 
 function Author(name, blog) {
-  Author.superClass.call(this, name);
+  Author.superClass.constructor.call(this, name);
   this.blog = blog;
 }
 extend(Author, Person);
@@ -54,10 +54,10 @@ Author.prototype.getBlog = function() {
 };
 
 var person = new Person('default name');
-var author = new Author('fulme', 'www.suluf.com/blog/');
+var author = new Author('fulme', 'http://www.blog.suluf.com/');
 alert(person.getName()); // 'default name'
 alert(author.getName()); // 'fulme'
-alert(author.getBlog()); // 'www.suluf.com/blog/'
+alert(author.getBlog()); // 'http://www.blog.suluf.com/'
 ```
 
 ### 原型链继承
@@ -65,7 +65,7 @@ alert(author.getBlog()); // 'www.suluf.com/blog/'
 ```js
 function clone(obj) {
   function F() {}
-  F.prototyp = obj;
+  F.prototype = obj;
   return new F();
 }
 
@@ -81,12 +81,12 @@ var author = clone(Person);
 alert(author.getName()); // 'default name'
 
 author.name = 'fulme';
-author.blog = 'www.suluf.com/blog/';
+author.blog = 'http://www.blog.suluf.com/';
 author.getBlog = function() {
   return this.blog;
 };
 alert(author.getName()); // 'fulme'
-alert(author.getBlog()); // 'www.suluf.com/blog/'
+alert(author.getBlog()); // 'http://www.blog.suluf.com/'
 ```
 
 ### 心得体会

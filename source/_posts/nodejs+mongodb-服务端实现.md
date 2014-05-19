@@ -65,6 +65,7 @@ node server.js
 这个过程在windows上同样很容易实现，只要装上NodeJS并根据官网的[EXAMPLE](http://nodejs.org/)稍作改动就可以完成。
 
 ### 第二阶段 - 开发机 + Mongodb测试机
+//TODO
 
 ### 第三阶段 - 线上机 + Mongodb线上机
 4台Nginx+NodeJS+Mongodb集群
